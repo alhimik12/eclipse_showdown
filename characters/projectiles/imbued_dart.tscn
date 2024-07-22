@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpavsgxctpdcc"]
+[gd_scene load_steps=4 format=3 uid="uid://cpavsgxctpdcc"]
 
+[ext_resource type="Script" path="res://characters/projectiles/imbued_dart.gd" id="1_lg641"]
 [ext_resource type="Texture2D" uid="uid://4gevuclkdy3q" path="res://textures/basic_shapes/half_circle.png" id="1_s5688"]
 [ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="2_0tn38"]
 
 [node name="imbued_dart" type="Node2D"]
+script = ExtResource("1_lg641")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.686275, 0.686275, 0.686275, 1)
@@ -22,3 +24,10 @@ texture = ExtResource("1_s5688")
 position = Vector2(10, 0)
 scale = Vector2(0.05, 0.025)
 texture = ExtResource("2_0tn38")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="lifetime" to="." method="lifetime_timeout"]

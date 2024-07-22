@@ -1,4 +1,8 @@
 extends effect_class
 
-func _process(delta):
-	character.can_attack = false
+func effect_start():
+	character.not_frozen = false
+
+
+func effect_end():
+	character.not_frozen = true

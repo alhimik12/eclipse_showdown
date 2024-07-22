@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4rcm1ry65u8x"]
+
+[ext_resource type="Script" path="res://characters/player/weapons/dartblow.gd" id="1_x6det"]
+
+[node name="dartblow" type="Node2D"]
+script = ExtResource("1_x6det")
+projectile = "res://characters/projectiles/imbued_dart.tscn"
+reload_time = 0.1
+shoot_time = 0.4

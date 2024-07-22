@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyoudyalwy6v"]
+[gd_scene load_steps=11 format=3 uid="uid://dyoudyalwy6v"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_rnmyl"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_slvn6"]
@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://44b0s6qr7qk6" path="res://characters/player/weapons/ball_wand.tscn" id="7_i36mp"]
 [ext_resource type="PackedScene" uid="uid://silqu5lnyxs5" path="res://characters/player/weapons/ring_ring.tscn" id="8_prvrr"]
 [ext_resource type="PackedScene" uid="uid://cepcvnl313xly" path="res://characters/player/weapons/antimatter_gauntlet.tscn" id="9_ej6o6"]
+[ext_resource type="PackedScene" uid="uid://c4rcm1ry65u8x" path="res://characters/player/weapons/dartblow.tscn" id="10_752xh"]
 
 [node name="player" type="Node2D" node_paths=PackedStringArray("gun1", "gun2")]
 script = ExtResource("1_rnmyl")
-gun1 = NodePath("ball_wand")
+gun1 = NodePath("dartblow")
 gun2 = NodePath("leaky_gun")
 
 [node name="Circle" type="Sprite2D" parent="."]
@@ -39,3 +40,5 @@ hp_bar = NodePath("../Progress_bar")
 [node name="ring_ring" parent="." instance=ExtResource("8_prvrr")]
 
 [node name="antimatter_gauntlet" parent="." instance=ExtResource("9_ej6o6")]
+
+[node name="dartblow" parent="." instance=ExtResource("10_752xh")]

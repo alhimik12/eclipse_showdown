@@ -4,10 +4,6 @@ var base_speed = 450
 @export var gun1: gun_class
 @export var gun2: gun_class
 
-
-func _ready():
-	effect_manager.apply_effect("slow")
-
 func process(delta):
 	var direction = Vector2(Input.get_axis("more_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
 	global_position += direction * base_speed * speed_change * delta * speed_multiplyer

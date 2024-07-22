@@ -8,6 +8,7 @@ var speed_change = 1
 var knockback_power = 15
 var speed_multiplyer = 1
 var reload_change = 1
+var not_frozen = true
 var can_attack = true
 var previous_position = Vector2.ZERO
 
@@ -26,6 +27,9 @@ func _process(delta):
 	speed_change = 1
 	reload_change = 1
 	can_attack = true
+	
+	if not not_frozen:
+		can_attack = false
 	
 	var cell_type = tilemap.get_cell_type(global_position)
 	match cell_type:

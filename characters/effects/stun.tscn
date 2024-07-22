@@ -1,8 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8c5xuhnss7wt"]
+[gd_scene load_steps=6 format=3 uid="uid://c8c5xuhnss7wt"]
 
 [ext_resource type="Script" path="res://characters/effects/stun.gd" id="1_85mrw"]
+[ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="2_1troc"]
+
+[sub_resource type="Curve" id="Curve_jeyu2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.986301, 0), -2.66241, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_emjhq"]
+curve = SubResource("Curve_jeyu2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qyh8l"]
+lifetime_randomness = 0.12
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 46.02
+spread = 70.289
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+radial_velocity_min = 1.9
+radial_velocity_max = 30.93
+damping_min = 30.578
+damping_max = 49.587
+scale_min = 0.01
+scale_max = 0.04
+scale_curve = SubResource("CurveTexture_emjhq")
+color = Color(0.45098, 0.662745, 0.415686, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.03
 
 [node name="stun" type="Node2D"]
 script = ExtResource("1_85mrw")
 duration = 0.15
 effect_name = "stun"
+
+[node name="particles" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_qyh8l")
+texture = ExtResource("2_1troc")
+speed_scale = 4.0
+explosiveness = 0.9
+local_coords = true
