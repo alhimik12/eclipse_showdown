@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpqc7s0m87vw5"]
+
+[ext_resource type="Script" path="res://characters/components/effect_manager.gd" id="1_ybaut"]
+
+[node name="effect_manager" type="Node2D"]
+script = ExtResource("1_ybaut")

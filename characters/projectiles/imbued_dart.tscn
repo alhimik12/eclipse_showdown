@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpavsgxctpdcc"]
+
+[ext_resource type="Texture2D" uid="uid://4gevuclkdy3q" path="res://textures/basic_shapes/half_circle.png" id="1_s5688"]
+[ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="2_0tn38"]
+
+[node name="imbued_dart" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+position = Vector2(0, -5)
+scale = Vector2(0.05, 0.04)
+texture = ExtResource("1_s5688")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+position = Vector2(0, 5)
+rotation = 3.14159
+scale = Vector2(0.05, 0.04)
+texture = ExtResource("1_s5688")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(0.05, 0.025)
+texture = ExtResource("2_0tn38")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bixr2hgfqoxid"]
+
+[ext_resource type="Script" path="res://characters/effects/execution.gd" id="1_6o52e"]
+[ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="2_ccp4q"]
+
+[sub_resource type="Animation" id="Animation_25s7k"]
+resource_name = "new_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9, 3),
+"transitions": PackedFloat32Array(1.46408, 0.164939, 2.2974),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, -30), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cq20w"]
+_data = {
+"new_animation": SubResource("Animation_25s7k")
+}
+
+[node name="execution" type="Node2D"]
+script = ExtResource("1_6o52e")
+duration = 3.0
+effect_name = "execution"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.811765, 0.631373, 0.517647, 1)
+position = Vector2(0, -50)
+scale = Vector2(0.02, 0.046)
+texture = ExtResource("2_ccp4q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, 250)
+rotation = -0.64546
+scale = Vector2(0.625921, 0.625921)
+skew = -0.279876
+texture = ExtResource("2_ccp4q")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cq20w")
+}

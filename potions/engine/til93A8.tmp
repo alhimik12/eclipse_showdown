@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://b0bt755ng5arj"]
+
+[ext_resource type="Texture2D" uid="uid://qbravbhuyiy0" path="res://textures/basic_shapes/pixel.png" id="1_ibgmo"]
+[ext_resource type="Script" path="res://potions/engine/tile_map.gd" id="2_kjgc3"]
+[ext_resource type="PackedScene" uid="uid://gsxu6mn2o1dh" path="res://potions/engine/alchemy_component.tscn" id="3_crary"]
+[ext_resource type="Texture2D" uid="uid://bahxx146q1abv" path="res://textures/marchin_squares.png" id="4_qusiu"]
+[ext_resource type="Script" path="res://potions/engine/marching_squares.gd" id="5_kkej3"]
+[ext_resource type="Script" path="res://potions/engine/controls.gd" id="6_l88g6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4vweb"]
+resource_name = "water"
+texture = ExtResource("1_ibgmo")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/modulate = Color(0.145098, 0.647059, 1, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4udw3"]
+resource_name = "fire"
+texture = ExtResource("1_ibgmo")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/modulate = Color(0.984314, 0.168627, 0.25098, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3b5s"]
+resource_name = "wall"
+texture = ExtResource("1_ibgmo")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/modulate = Color(0, 0.65098, 0.396078, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_avwgh"]
+resource_name = "glow"
+texture = ExtResource("1_ibgmo")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/modulate = Color(0.85098, 0.521569, 0.172549, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xgxn"]
+resource_name = "freeze"
+texture = ExtResource("1_ibgmo")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/modulate = Color(0.658824, 0.513726, 1, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aikva"]
+resource_name = "scorch"
+texture = ExtResource("1_ibgmo")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 0.603922, 1)
+
+[sub_resource type="TileSet" id="TileSet_egcye"]
+tile_size = Vector2i(10, 10)
+sources/0 = SubResource("TileSetAtlasSource_4vweb")
+sources/1 = SubResource("TileSetAtlasSource_4udw3")
+sources/2 = SubResource("TileSetAtlasSource_o3b5s")
+sources/3 = SubResource("TileSetAtlasSource_avwgh")
+sources/4 = SubResource("TileSetAtlasSource_2xgxn")
+sources/5 = SubResource("TileSetAtlasSource_aikva")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uembk"]
+resource_name = "<null>"
+texture = ExtResource("4_qusiu")
+texture_region_size = Vector2i(200, 200)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cuxs2"]
+tile_size = Vector2i(200, 200)
+sources/0 = SubResource("TileSetAtlasSource_uembk")
+
+[node name="TileMap" type="Node2D"]
+script = ExtResource("2_kjgc3")
+
+[node name="alchemy_component" parent="." instance=ExtResource("3_crary")]
+
+[node name="points" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_egcye")
+format = 2
+
+[node name="visuals" type="TileMap" parent="."]
+position = Vector2(10, 10)
+scale = Vector2(0.1, 0.1)
+tile_set = SubResource("TileSet_cuxs2")
+format = 2
+layer_0/name = "water"
+layer_0/modulate = Color(0.196078, 0.298039, 0.568627, 1)
+layer_1/name = "fire"
+layer_1/modulate = Color(0.372549, 0.0196078, 0, 1)
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "wall"
+layer_2/modulate = Color(0.447059, 0.647059, 0.443137, 1)
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "glow"
+layer_3/modulate = Color(0.521569, 0.517647, 0, 1)
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "freeze"
+layer_4/modulate = Color(0.239216, 0.2, 0.333333, 1)
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = "scorching"
+layer_5/tile_data = PackedInt32Array()
+script = ExtResource("5_kkej3")
+
+[node name="controls" type="Node2D" parent="."]
+script = ExtResource("6_l88g6")

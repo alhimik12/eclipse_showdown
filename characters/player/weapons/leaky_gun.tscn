@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxciwjd8km6g0"]
+
+[ext_resource type="Script" path="res://characters/player/weapons/leaky_gun.gd" id="1_fy4l4"]
+
+[node name="leaky_gun" type="Node2D"]
+script = ExtResource("1_fy4l4")
+projectile = "res://characters/projectiles/leaky_bullet.tscn"

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://mn15jmdbf6s7"]
+
+[ext_resource type="Script" path="res://characters/projectiles/antimatter_shard.gd" id="1_onwxd"]
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="2_rginv"]
+
+[node name="antimatter_shard" type="Node2D"]
+script = ExtResource("1_onwxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.490196, 0.0823529, 0.572549, 1)
+self_modulate = Color(0.709804, 0.709804, 0.709804, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_rginv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.694118, 0.694118, 0.694118, 1)
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_rginv")

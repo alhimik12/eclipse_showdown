@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyoudyalwy6v"]
+
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_rnmyl"]
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_slvn6"]
+[ext_resource type="PackedScene" uid="uid://dix67g2ptb14f" path="res://characters/components/progress_bar.tscn" id="3_1q3xy"]
+[ext_resource type="PackedScene" uid="uid://sffcljjwysfa" path="res://characters/components/hp_manager.tscn" id="4_c5kjv"]
+
+[node name="player" type="Node2D"]
+script = ExtResource("1_rnmyl")
+
+[node name="Circle" type="Sprite2D" parent="."]
+modulate = Color(0.47451, 0.47451, 0.47451, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_slvn6")
+
+[node name="Progress_bar" parent="." instance=ExtResource("3_1q3xy")]
+position = Vector2(0, -35)
+scale = Vector2(0.4, 0.4)
+length = 6.0
+color_progress = Color(0, 0.678431, 0.388235, 1)
+centered = true
+
+[node name="hp_manager" parent="." node_paths=PackedStringArray("hp_bar") instance=ExtResource("4_c5kjv")]
+hp_bar = NodePath("../Progress_bar")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://44b0s6qr7qk6"]
+
+[ext_resource type="Script" path="res://characters/player/weapons/ball_wand.gd" id="1_4ibdl"]
+
+[node name="ball_wand" type="Node2D"]
+script = ExtResource("1_4ibdl")
+projectile = "res://characters/projectiles/element_ball.tscn"
+reload_time = 0.8
+shoot_time = 0.8

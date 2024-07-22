@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dix67g2ptb14f"]
+
+[ext_resource type="Script" path="res://characters/components/Progress_bar.gd" id="1_cepgv"]
+[ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="2_olx52"]
+
+[node name="Progress_bar" type="Node2D"]
+script = ExtResource("1_cepgv")
+
+[node name="background" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_olx52")
+
+[node name="progress" type="Sprite2D" parent="."]
+scale = Vector2(0.045, 0.045)
+texture = ExtResource("2_olx52")

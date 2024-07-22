@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8c5xuhnss7wt"]
+
+[ext_resource type="Script" path="res://characters/effects/stun.gd" id="1_85mrw"]
+
+[node name="stun" type="Node2D"]
+script = ExtResource("1_85mrw")
+duration = 0.15
+effect_name = "stun"

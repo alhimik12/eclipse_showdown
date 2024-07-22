@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cepcvnl313xly"]
+
+[ext_resource type="Script" path="res://characters/player/weapons/antimatter_gauntlet.gd" id="1_x8m46"]
+
+[node name="antimatter_gauntlet" type="Node2D"]
+script = ExtResource("1_x8m46")
+projectile = "res://characters/projectiles/antimatter_shard.tscn"
+reload_time = 0.1
+shoot_time = 0.1

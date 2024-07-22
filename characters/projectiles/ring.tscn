@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8yew0fdkesi5"]
+
+[ext_resource type="Script" path="res://characters/projectiles/ring.gd" id="1_berq2"]
+
+[node name="ring" type="Node2D"]
+script = ExtResource("1_berq2")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1f5yekgrum2y"]
+
+[ext_resource type="Script" path="res://characters/projectiles/leaky_bullet.gd" id="1_57ucn"]
+[ext_resource type="Texture2D" uid="uid://4gevuclkdy3q" path="res://textures/basic_shapes/half_circle.png" id="1_g2xde"]
+
+[node name="leaky_bullet" type="Node2D"]
+script = ExtResource("1_57ucn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.06, 0.09)
+texture = ExtResource("1_g2xde")
+
+[node name="lifetime" type="Timer" parent="."]
+autostart = true
+
+[node name="leak" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="lifetime" to="." method="lifetime_timeout"]
+[connection signal="timeout" from="leak" to="." method="leak_timeout"]

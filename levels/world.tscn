@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5tc8qv8jyaov"]
+
+[ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://potions/engine/tile_map.tscn" id="1_i1v2g"]
+[ext_resource type="PackedScene" uid="uid://dyoudyalwy6v" path="res://characters/player/player.tscn" id="2_rxr7l"]
+
+[node name="world" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_i1v2g")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("2_rxr7l")]
+tilemap = NodePath("../TileMap")

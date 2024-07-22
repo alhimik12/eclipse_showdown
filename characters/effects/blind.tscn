@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0o6f30fsdovn"]
+
+[ext_resource type="Script" path="res://characters/effects/blind.gd" id="1_dr0dx"]
+
+[node name="blind" type="Node2D"]
+script = ExtResource("1_dr0dx")
+duration = 1.2
+effect_name = "blind"

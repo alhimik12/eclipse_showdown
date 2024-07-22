@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://sffcljjwysfa"]
+
+[ext_resource type="Script" path="res://characters/components/hp_manager.gd" id="1_2ykea"]
+
+[node name="hp_manager" type="Node2D" node_paths=PackedStringArray("hp_bar")]
+script = ExtResource("1_2ykea")
+hp_bar = NodePath("")
