@@ -3,11 +3,28 @@ class_name projectile_class extends Node2D
 var character: character_class
 var element: int
 @onready var tilemap = character.tilemap
+@onready var area2d: Area2D = get_node("Area2D")
+@onready var start_timer: Timer = Timer.new()
+@export var start_time = 0.08
 var hp = 1
 
 func _ready():
-	modulate = character.tilemap.alchemy.element_colors[element]
+	area2d.monitoring = false
+	area2d.area_entered.connect(hit)
+
+	start_timer.wait_time = start_time
+	start_timer.one_shot = true
+	start_timer.timeout.connect(on_start)
+	add_child(start_timer)
+	start_timer.start()
 	ready()
+
+func on_start():
+	area2d.monitoring = true
+
+func hit(area):
+	area.get_parent().get_damage(20)
+	get_damage(2)
 
 func ready():
 	pass

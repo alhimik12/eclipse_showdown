@@ -14,6 +14,13 @@ func loadup():
 
 func shoot(time_modifier):
 	if ammo > 0:
-		for i in range(3):
-			super(time_modifier)
-		ammo -= 1
+		if shoot_timer.is_stopped():
+			for i in range(3):
+				before_shoot()
+				var proj_node = load(projectile).instantiate()
+				proj_node.character = char
+				proj_node.element = element
+				get_parent().get_parent().add_child(proj_node)
+				after_shoot()
+			ammo -= 1
+			shoot_timer.start(time_modifier * shoot_time)

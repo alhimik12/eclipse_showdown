@@ -6,3 +6,8 @@ func effect_start():
 func effect_end():
 	if not is_cleared:
 		character.get_damage(50)
+
+func extend():
+	timer.start()
+	$animation.stop()
+	$animation.play("new_animation")

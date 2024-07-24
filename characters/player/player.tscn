@@ -7,19 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://cpqc7s0m87vw5" path="res://characters/components/effect_manager.tscn" id="5_wi0gc"]
 [ext_resource type="PackedScene" uid="uid://bxciwjd8km6g0" path="res://characters/player/weapons/leaky_gun.tscn" id="6_jppos"]
 [ext_resource type="PackedScene" uid="uid://44b0s6qr7qk6" path="res://characters/player/weapons/ball_wand.tscn" id="7_i36mp"]
-[ext_resource type="PackedScene" uid="uid://silqu5lnyxs5" path="res://characters/player/weapons/ring_ring.tscn" id="8_prvrr"]
+[ext_resource type="PackedScene" uid="uid://c4rcm1ry65u8x" path="res://characters/player/weapons/dartblow.tscn" id="9_6k32u"]
 [ext_resource type="PackedScene" uid="uid://cepcvnl313xly" path="res://characters/player/weapons/antimatter_gauntlet.tscn" id="9_ej6o6"]
-[ext_resource type="PackedScene" uid="uid://c4rcm1ry65u8x" path="res://characters/player/weapons/dartblow.tscn" id="10_752xh"]
 
-[node name="player" type="Node2D" node_paths=PackedStringArray("gun1", "gun2")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rm64"]
+radius = 25.0799
+
+[node name="player" type="Node2D" node_paths=PackedStringArray("gun1", "gun2") groups=["player"]]
 script = ExtResource("1_rnmyl")
-gun1 = NodePath("dartblow")
-gun2 = NodePath("leaky_gun")
+gun1 = NodePath("antimatter_gauntlet")
+gun2 = NodePath("dartblow")
 
 [node name="Circle" type="Sprite2D" parent="."]
 modulate = Color(0.47451, 0.47451, 0.47451, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_slvn6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3rm64")
 
 [node name="Progress_bar" parent="." instance=ExtResource("3_1q3xy")]
 position = Vector2(0, -35)
@@ -33,12 +42,10 @@ hp_bar = NodePath("../Progress_bar")
 
 [node name="effect_manager" parent="." instance=ExtResource("5_wi0gc")]
 
-[node name="leaky_gun" parent="." instance=ExtResource("6_jppos")]
-
 [node name="ball_wand" parent="." instance=ExtResource("7_i36mp")]
 
-[node name="ring_ring" parent="." instance=ExtResource("8_prvrr")]
+[node name="leaky_gun" parent="." instance=ExtResource("6_jppos")]
 
 [node name="antimatter_gauntlet" parent="." instance=ExtResource("9_ej6o6")]
 
-[node name="dartblow" parent="." instance=ExtResource("10_752xh")]
+[node name="dartblow" parent="." instance=ExtResource("9_6k32u")]

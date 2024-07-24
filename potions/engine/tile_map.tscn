@@ -83,7 +83,7 @@ texture_region_size = Vector2i(200, 200)
 tile_size = Vector2i(200, 200)
 sources/0 = SubResource("TileSetAtlasSource_uembk")
 
-[node name="TileMap" type="Node2D"]
+[node name="TileMap" type="Node2D" groups=["tilemap"]]
 script = ExtResource("2_kjgc3")
 
 [node name="alchemy_component" parent="." instance=ExtResource("3_crary")]

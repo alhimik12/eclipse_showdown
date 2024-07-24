@@ -1,6 +1,6 @@
 class_name character_class extends Node2D
 
-@export var tilemap: Node2D
+@onready var tilemap: Node2D = get_tree().get_first_node_in_group("tilemap")
 @onready var effect_manager = get_node("effect_manager")
 
 var is_burning = false
@@ -22,6 +22,10 @@ func knockback(direction, power):
 func move_damage(dmg, delta):
 	var position_change = (global_position-previous_position).length()
 	get_damage(dmg * delta * (position_change)**2)
+
+func get_speed(spd):
+	return spd * speed_change * speed_multiplyer
+	
 
 func _process(delta):
 	speed_change = 1
@@ -55,6 +59,11 @@ func _process(delta):
 	
 	previous_position = global_position
 	process(delta)
+	if can_attack:
+		attack(delta)
+
+func attack(delta):
+	pass
 
 func get_damage(dmg):
 	$hp_manager.get_damage(dmg)

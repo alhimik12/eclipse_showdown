@@ -2,9 +2,9 @@ extends projectile_class
 
 var direction
 var speed = 1700
-var spread = 30
+var spread = 20
 
-func _ready():
+func ready():
 	hp = 2
 	global_position = character.global_position
 	look_at(get_global_mouse_position())

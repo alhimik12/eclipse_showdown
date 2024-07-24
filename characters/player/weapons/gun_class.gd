@@ -1,15 +1,20 @@
 class_name gun_class extends Node2D
 
+var char: character_class
+var tilemap
+
 @export_file("*.tscn") var projectile
 var element: int
-@onready var char = get_parent()
-@onready var tilemap = char.tilemap
 
 var load_timer = Timer.new()
 @export var reload_time: float = 1
 
 var shoot_timer = Timer.new()
 @export var shoot_time: float = 1
+
+func init():
+	char = get_parent()
+	tilemap = char.tilemap
 
 func _ready():
 	init_timer(load_timer, reload_time)

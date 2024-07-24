@@ -11,7 +11,7 @@ var has_effect: Dictionary = {"slow": false, "burn": false, "stun": false, "blin
 
 func apply_effect(effect):
 	if has_effect[effect]:
-		get_node(effect).timer.start()
+		get_node(effect).extend()
 	else:
 		var effect_node = effects[effect].instantiate()
 		effect_node.character = get_parent()

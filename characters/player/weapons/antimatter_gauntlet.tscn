@@ -6,4 +6,4 @@
 script = ExtResource("1_x8m46")
 projectile = "res://characters/projectiles/antimatter_shard.tscn"
 reload_time = 0.1
-shoot_time = 0.1
+shoot_time = 0.2

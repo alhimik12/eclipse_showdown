@@ -12,16 +12,19 @@ func ready():
 func process(delta):
 	global_position += direction * speed * delta
 
-func on_death():
-	character.effect_manager.apply_effect(get_element())
+func hit(area):
+	area.get_parent().effect_manager.apply_effect(get_element(area))
+	area.get_parent().get_damage(10)
+	hp -= 1
 
-func get_element():
+func get_element(area):
 	match element:
 		0:
 			return "slow"
 		1:
 			return "burn"
 		2:
+			area.get_parent().knockback(direction, 25)
 			return "stun"
 		3:
 			return "blind"

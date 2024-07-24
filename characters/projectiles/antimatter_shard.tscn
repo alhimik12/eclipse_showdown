@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://mn15jmdbf6s7"]
+[gd_scene load_steps=4 format=3 uid="uid://mn15jmdbf6s7"]
 
 [ext_resource type="Script" path="res://characters/projectiles/antimatter_shard.gd" id="1_onwxd"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="2_rginv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32vwc"]
+radius = 21.0
 
 [node name="antimatter_shard" type="Node2D"]
 script = ExtResource("1_onwxd")
@@ -17,3 +20,10 @@ modulate = Color(0.694118, 0.694118, 0.694118, 1)
 self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("2_rginv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_32vwc")

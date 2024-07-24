@@ -88,7 +88,7 @@ skew = -0.279876
 texture = ExtResource("2_ccp4q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-2.35007e-07, -51.0753)
+position = Vector2(-3.46176e-11, -225.806)
 rotation = 1.5708
 scale = Vector2(0.121554, 3.06239)
 texture = ExtResource("2_ccp4q")

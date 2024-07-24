@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7ugcv0nl6c24"]
+[gd_scene load_steps=4 format=3 uid="uid://b7ugcv0nl6c24"]
 
 [ext_resource type="Script" path="res://characters/projectiles/element_ball.gd" id="1_sgl6c"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="2_6gbna"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvtd6"]
+radius = 19.0
 
 [node name="element_ball" type="Node2D"]
 script = ExtResource("1_sgl6c")
@@ -9,3 +12,10 @@ script = ExtResource("1_sgl6c")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_6gbna")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dvtd6")
