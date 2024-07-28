@@ -1,7 +1,8 @@
 extends Node2D
 
 var element_names = {0: "water", 1: "fire", 2: "wall", 3: "glow", 4: "freeze", 5: "scorch"}
-var element_colors = {0: Color.SKY_BLUE, 1: Color.RED, 2: Color.PALE_GREEN, 3: Color.YELLOW, 4: Color.PURPLE, 5: Color.LIGHT_GOLDENROD}
+var element_colors = {-1: Color.WEB_GRAY, 0: Color.ROYAL_BLUE, 1: Color.RED, 2: Color.PALE_GREEN,\
+ 3: Color.YELLOW, 4: Color.PURPLE, 5: Color.ANTIQUE_WHITE}
 
 
 func is_equivalent(el1, el2, v1, v2):

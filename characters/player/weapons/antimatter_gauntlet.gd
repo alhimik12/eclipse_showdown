@@ -1,6 +1,6 @@
 extends gun_class
 
-var max_ammo = 2
+var max_ammo = 3
 var ammo = max_ammo
 
 func loadup():

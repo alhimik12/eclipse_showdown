@@ -12,7 +12,8 @@ var hp = 1
 func _ready():
 	area2d.monitoring = true
 	area2d.area_entered.connect(area_entered)
-
+	modulate = tilemap.alchemy.element_colors[element]
+	
 	start_timer.wait_time = start_time
 	start_timer.one_shot = true
 	start_timer.timeout.connect(on_start)
