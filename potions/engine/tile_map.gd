@@ -1,4 +1,4 @@
-extends Node2D
+class_name tile_map_class extends Node2D
 
 @onready var alchemy = $alchemy_component
 @onready var points = $points
@@ -20,6 +20,44 @@ func dec2bin(decimal_value):
 		count -= 1 
 	return binary_string
 
+func compute_rectangle_with_hole(center, size, radius, callable, arguments):
+	var center_cell = get_cell_coords(center, points)
+	var edges = [center.x - size.x/2, center.x + size.x/2,\
+	 center.y - size.y/2, center.y + size.y/2]
+	var up_left_corner = get_cell_coords(Vector2(edges[0], edges[2]), points)
+	var pointer = up_left_corner
+	var bounds = get_cell_coords(Vector2(center.x, edges[3]), points)
+	while pointer.y <= bounds.y:
+		pointer.x = up_left_corner.x
+		while pointer.x <= bounds.x and (pointer-center_cell).length() >= radius:
+			compute_cell(pointer, callable, arguments)
+			pointer.x += 1
+		pointer.y += 1
+	
+	var up_right_corner = get_cell_coords(Vector2(edges[1], edges[2]), points)
+	pointer = up_right_corner
+	bounds = get_cell_coords(Vector2(center.x, edges[3]), points )
+	while pointer.y <= bounds.y:
+		pointer.x = up_right_corner.x
+		while pointer.x >= bounds.x and (pointer-center_cell).length() >= radius:
+			compute_cell(pointer, callable, arguments)
+			pointer.x -= 1
+		pointer.y += 1
+
+
+func compute_rectangle(center, size, callable, arguments):
+	var edges = [center.x - size.x/2, center.x + size.x/2,\
+	 center.y - size.y/2, center.y + size.y/2]
+	var up_left_corner = get_cell_coords(Vector2(edges[0], edges[2]), points)
+	var pointer = up_left_corner
+	var bounds = get_cell_coords(Vector2(edges[1], edges[3]), points)
+	while pointer.y <= bounds.y:
+		pointer.x = up_left_corner.x
+		while pointer.x <= bounds.x:
+			compute_cell(pointer, callable, arguments)
+			pointer.x += 1
+		pointer.y += 1
+	
 func get_cell_coords(coordinates: Vector2, node: TileMap):
 	return node.local_to_map(node.to_local(coordinates))
 

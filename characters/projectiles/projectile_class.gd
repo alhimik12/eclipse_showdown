@@ -7,10 +7,11 @@ var element: int
 @onready var start_timer: Timer = Timer.new()
 @export var start_time = 0.08
 var hp = 1
+@export var dmg: float = 20
 
 func _ready():
-	area2d.monitoring = false
-	area2d.area_entered.connect(hit)
+	area2d.monitoring = true
+	area2d.area_entered.connect(area_entered)
 
 	start_timer.wait_time = start_time
 	start_timer.one_shot = true
@@ -22,8 +23,13 @@ func _ready():
 func on_start():
 	area2d.monitoring = true
 
-func hit(area):
-	area.get_parent().get_damage(20)
+func area_entered(area):
+	var target = area.get_parent()
+	if target != character:
+		hit(target)
+
+func hit(target):
+	target.get_damage(dmg)
 	get_damage(2)
 
 func ready():

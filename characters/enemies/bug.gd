@@ -1,7 +1,21 @@
-extends character_class
+extends enemy_class
 
-@onready var player: character_class = get_tree().get_first_node_in_group("player")
 var speed = 200
+
+func _ready():
+	super()
+	knockback_power = 25
+	break_radius = 2
+
+func wall_hit():
+	super()
+	$dash.cancel()
 
 func process(delta):
 	global_position = global_position.move_toward(player.global_position, get_speed(speed) * delta)
+	if effect_manager.has_effect["stun"]:
+		can_attack = false
+
+func attack(delta):
+	$dash.use()
+	$knife_throw.use()

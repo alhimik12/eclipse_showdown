@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyoudyalwy6v"]
+[gd_scene load_steps=12 format=3 uid="uid://dyoudyalwy6v"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_rnmyl"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_slvn6"]
 [ext_resource type="PackedScene" uid="uid://dix67g2ptb14f" path="res://characters/components/progress_bar.tscn" id="3_1q3xy"]
 [ext_resource type="PackedScene" uid="uid://sffcljjwysfa" path="res://characters/components/hp_manager.tscn" id="4_c5kjv"]
+[ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="4_v3hs8"]
 [ext_resource type="PackedScene" uid="uid://cpqc7s0m87vw5" path="res://characters/components/effect_manager.tscn" id="5_wi0gc"]
 [ext_resource type="PackedScene" uid="uid://bxciwjd8km6g0" path="res://characters/player/weapons/leaky_gun.tscn" id="6_jppos"]
 [ext_resource type="PackedScene" uid="uid://44b0s6qr7qk6" path="res://characters/player/weapons/ball_wand.tscn" id="7_i36mp"]
@@ -15,7 +16,7 @@ radius = 25.0799
 
 [node name="player" type="Node2D" node_paths=PackedStringArray("gun1", "gun2") groups=["player"]]
 script = ExtResource("1_rnmyl")
-gun1 = NodePath("antimatter_gauntlet")
+gun1 = NodePath("ball_wand")
 gun2 = NodePath("dartblow")
 
 [node name="Circle" type="Sprite2D" parent="."]
@@ -34,7 +35,7 @@ shape = SubResource("CircleShape2D_3rm64")
 position = Vector2(0, -35)
 scale = Vector2(0.4, 0.4)
 length = 6.0
-color_progress = Color(0, 0.678431, 0.388235, 1)
+color_progress = ExtResource("4_v3hs8")
 centered = true
 
 [node name="hp_manager" parent="." node_paths=PackedStringArray("hp_bar") instance=ExtResource("4_c5kjv")]

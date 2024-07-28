@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://q7ce6itx4h0u"]
+[gd_scene load_steps=10 format=3 uid="uid://q7ce6itx4h0u"]
 
 [ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="1_eo1ai"]
 [ext_resource type="Script" path="res://characters/enemies/bug.gd" id="1_ugsu7"]
 [ext_resource type="PackedScene" uid="uid://cpqc7s0m87vw5" path="res://characters/components/effect_manager.tscn" id="3_a6v46"]
 [ext_resource type="PackedScene" uid="uid://sffcljjwysfa" path="res://characters/components/hp_manager.tscn" id="4_oxd28"]
 [ext_resource type="PackedScene" uid="uid://dix67g2ptb14f" path="res://characters/components/progress_bar.tscn" id="5_63lwt"]
+[ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="6_0h70e"]
+[ext_resource type="PackedScene" uid="uid://c3a7mb3ficoqa" path="res://characters/enemies/abilities/dash.tscn" id="6_mbaup"]
+[ext_resource type="PackedScene" uid="uid://c2r87eglafsbr" path="res://characters/enemies/abilities/knife_throw.tscn" id="7_wx1vd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wbmoe"]
 radius = 15.0333
@@ -13,6 +16,7 @@ radius = 15.0333
 script = ExtResource("1_ugsu7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.892919, 0.519314, 0.630538, 1)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_eo1ai")
 
@@ -21,16 +25,22 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_wbmoe")
 
 [node name="effect_manager" parent="." instance=ExtResource("3_a6v46")]
 
 [node name="hp_manager" parent="." node_paths=PackedStringArray("hp_bar") instance=ExtResource("4_oxd28")]
 hp_bar = NodePath("../Progress_bar")
+hp_max = 30.0
 
 [node name="Progress_bar" parent="." instance=ExtResource("5_63lwt")]
 position = Vector2(0, -20)
 scale = Vector2(0.4, 0.4)
 length = 6.0
-color_progress = Color(0, 1, 0, 1)
+color_progress = ExtResource("6_0h70e")
 centered = true
+
+[node name="dash" parent="." instance=ExtResource("6_mbaup")]
+
+[node name="knife_throw" parent="." instance=ExtResource("7_wx1vd")]

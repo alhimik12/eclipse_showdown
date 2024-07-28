@@ -4,7 +4,7 @@ const TEXTURE_SIZE = 24.8
 
 @export var length: float
 @export var color_background: Color
-@export var color_progress: Color
+@export var color_progress: Gradient
 @export var centered: bool
 
 var scale_bg = Vector2(0.05, 0.05)
@@ -18,13 +18,16 @@ func _ready():
 	$background.scale.x = length * scale_bg.x
 	$background.scale.y = scale_bg.y
 	
-	$progress.modulate = color_progress
+	change_progress_color(1.0)
 	change_progress_scale(1.0)
 	$progress.scale.y = scale_bg.y - delta_size
 	update()
 
 func change_progress_scale(k):
-	$progress.scale.x = length * k * scale_bg.x - delta_size
+	if k == 0:
+		$progress.scale.x = 0
+	else:
+		$progress.scale.x = length * k * scale_bg.x - delta_size
 
 func change_progress_position(k):
 	if not centered:
@@ -32,7 +35,13 @@ func change_progress_position(k):
 	else:
 		$progress.position.x = 0
 
+func change_progress_color(k):
+	$progress.modulate = color_progress.sample(1-k)
+
 func update(prog = progress):
 	progress = prog
-	change_progress_scale(prog/progress_max)
-	change_progress_position(prog/progress_max)
+	var k = prog/progress_max
+	change_progress_scale(k)
+	change_progress_position(k)
+	change_progress_color(k)
+	

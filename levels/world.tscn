@@ -8,10 +8,10 @@
 
 [node name="TileMap" parent="." instance=ExtResource("1_i1v2g")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
 [node name="player" parent="." instance=ExtResource("2_rxr7l")]
 
+[node name="Camera2D" type="Camera2D" parent="player" groups=["camera"]]
+zoom = Vector2(1.5, 1.5)
+
 [node name="bug" parent="." instance=ExtResource("3_e037o")]
-position = Vector2(-200, -3)
+position = Vector2(-200000, -3)

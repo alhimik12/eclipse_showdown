@@ -11,13 +11,19 @@ var reload_change = 1
 var not_frozen = true
 var can_attack = true
 var previous_position = Vector2.ZERO
+var break_radius = 3
+
+func _ready():
+	pass
 
 func wall_hit():
-	global_position -= tilemap.get_cell_direction(global_position) * knockback_power
-	tilemap.clear_circle(global_position, 3, 2)
+	knockback(-tilemap.get_cell_direction(global_position), knockback_power)
+	tilemap.clear_circle(global_position, break_radius, 2)
 
 func knockback(direction, power):
-	global_position += direction * power
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(self, "global_position", global_position + direction * power, 0.2)
 
 func move_damage(dmg, delta):
 	var position_change = (global_position-previous_position).length()
@@ -48,13 +54,12 @@ func _process(delta):
 			wall_hit()
 			effect_manager.apply_effect("stun")
 		3:
-			move_damage(0.8, delta)
-			get_damage(3 * delta)
+			move_damage(0.35, delta)
 			reload_change = 0.3
 		4:
 			can_attack = false
 		5:
-			get_damage(60 * delta)
+			get_damage(50 * delta)
 		
 	
 	previous_position = global_position

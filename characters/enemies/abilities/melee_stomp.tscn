@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nnk2duaea0ac"]
+
+[ext_resource type="Script" path="res://characters/enemies/abilities/melee_stomp.gd" id="1_22vab"]
+
+[node name="melee_stomp" type="Node2D"]
+script = ExtResource("1_22vab")

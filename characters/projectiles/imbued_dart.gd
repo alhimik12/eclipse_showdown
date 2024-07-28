@@ -12,19 +12,20 @@ func ready():
 func process(delta):
 	global_position += direction * speed * delta
 
-func hit(area):
-	area.get_parent().effect_manager.apply_effect(get_element(area))
-	area.get_parent().get_damage(10)
+func hit(target):
+	if element != -1:
+		target.effect_manager.apply_effect(get_element(target))
+	target.get_damage(dmg)
 	hp -= 1
 
-func get_element(area):
+func get_element(target):
 	match element:
 		0:
 			return "slow"
 		1:
 			return "burn"
 		2:
-			area.get_parent().knockback(direction, 25)
+			target.knockback(direction, 25)
 			return "stun"
 		3:
 			return "blind"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3a7mb3ficoqa"]
+
+[ext_resource type="Script" path="res://characters/enemies/abilities/dash.gd" id="1_txjow"]
+
+[node name="dash" type="Node2D"]
+script = ExtResource("1_txjow")
+cooldown = 1.0
