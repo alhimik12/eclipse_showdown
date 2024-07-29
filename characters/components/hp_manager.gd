@@ -13,6 +13,7 @@ func get_damage(dmg):
 	hp -= dmg
 	if hp <= 0:
 		hp = 0
+		get_parent().die()
 	if hp > hp_max:
 		hp = hp_max
 	

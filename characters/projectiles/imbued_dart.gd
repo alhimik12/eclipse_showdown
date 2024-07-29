@@ -15,6 +15,8 @@ func process(delta):
 func hit(target):
 	if element != -1:
 		target.effect_manager.apply_effect(get_element(target))
+	else:
+		dmg /= 2
 	target.get_damage(dmg)
 	hp -= 1
 

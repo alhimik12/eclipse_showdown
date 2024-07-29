@@ -6,4 +6,4 @@
 script = ExtResource("1_x6det")
 projectile = "res://characters/projectiles/imbued_dart.tscn"
 reload_time = 0.1
-shoot_time = 0.4
+shoot_time = 0.6

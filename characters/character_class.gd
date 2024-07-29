@@ -13,6 +13,9 @@ var can_attack = true
 var previous_position = Vector2.ZERO
 var break_radius = 3
 
+func die():
+	queue_free()
+
 func _ready():
 	pass
 
@@ -42,6 +45,9 @@ func _process(delta):
 		can_attack = false
 	
 	var cell_type = tilemap.get_cell_type(global_position)
+	var sun = tilemap.get_node("sun")
+	if global_position.distance_to(sun.center) > (sun.radius + sun.width) * 20:
+		cell_type = 5
 	match cell_type:
 		0:
 			speed_change = 0.4

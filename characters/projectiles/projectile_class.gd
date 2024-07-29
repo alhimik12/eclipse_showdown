@@ -7,7 +7,7 @@ var element: int
 @onready var start_timer: Timer = Timer.new()
 @export var start_time = 0.08
 var hp = 1
-@export var dmg: float = 20
+@export var dmg: float = 10
 
 func _ready():
 	area2d.monitoring = true

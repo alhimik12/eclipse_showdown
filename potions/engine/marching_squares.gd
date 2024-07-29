@@ -7,16 +7,20 @@ func _ready():
 	update()
 
 func refresh(new_points):
+	#print(Time.get_ticks_usec())
 	var cell_new = []
+	#print(len(new_points))
 	for point in new_points:
+		#print("A  ", Time.get_ticks_usec())
 		call_from_point(clear_point, [point, 0, 0, 0])
 		for layer in range(6):
 			call_from_point(remove_from_dict, [point, cell_points, 0, layer])
 		var layer = points.get_cell_source_id(0, point)
-		
+		#print("B  ", Time.get_ticks_usec())
 		call_from_point(add_to_list, [point, cell_new, 0, layer])
-		
+		#print("C  ", Time.get_ticks_usec())
 		call_from_point(add_to_dict, [point, cell_points, 0, layer])
+	#print("D  ", Time.get_ticks_usec())
 
 	for key in cell_new:
 		for layer in range(6):
@@ -26,6 +30,8 @@ func refresh(new_points):
 				var cell = key[0]
 				var cell_type = get_cell_type(values)
 				set_cell(layer, cell, 0, cell_type)
+				
+	#print("F  ", Time.get_ticks_usec())
 
 func clear_point(point, _a, _b, _c):
 	for layer in range(6):

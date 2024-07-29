@@ -5,13 +5,12 @@ var max_ammo = 2
 var ammo = max_ammo
 
 func loadup():
-	if ammo < max_ammo:
-		var cell_type = get_cell()
-		if cell_type != -1:
-			element = cell_type
-			ammo = max_ammo
-			clear_cells(cell_type)
-			return true
+	var cell_type = get_cell()
+	if cell_type != -1:
+		element = cell_type
+		ammo = max_ammo
+		clear_cells(cell_type)
+		return true
 	return false
 
 func shoot(time_modifier):

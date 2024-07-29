@@ -15,3 +15,9 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="bug" parent="." instance=ExtResource("3_e037o")]
 position = Vector2(-200000, -3)
+
+[node name="bug2" parent="." instance=ExtResource("3_e037o")]
+position = Vector2(-313, 157)
+
+[node name="bug3" parent="." instance=ExtResource("3_e037o")]
+position = Vector2(229, -212)

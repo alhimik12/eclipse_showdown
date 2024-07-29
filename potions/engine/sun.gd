@@ -3,10 +3,10 @@ extends TileMap
 @onready var tilemap: tile_map_class = get_parent()
 @onready var camera = get_tree().get_first_node_in_group("camera")
 var center = Vector2.ZERO
-var radius = 30
+var radius = 40
 var light_width = 6
 var width = 10
-var clear_radius = 2
+var clear_width = 2
 
 func fill_cell(coordinates: Vector2i, type: int = 0):
 	#var new_type = alchemy.combine_elements(points.get_cell_source_id(0, coordinates), type)
@@ -31,19 +31,36 @@ func compute_visible_tiles():
 
 func set_sun_cell(coords):
 	var dist_to_center = (coords-tilemap.get_cell_coords(center, self)).length()
-	if dist_to_center < radius:
+	if dist_to_center < radius - clear_width:
 		set_cell(0, coords, -1, Vector2i.ZERO)
+	elif dist_to_center < radius:
+		set_cell(0, coords, 6, Vector2i.ZERO)
 	elif dist_to_center < radius + light_width:
 		set_cell(0, coords, 3, Vector2i.ZERO)
 	else:
 		set_cell(0, coords, 5, Vector2i.ZERO)
 
 func timer_timeout():
-	center.x += 25 * $Timer.wait_time
+	center.x += 40
 	update()
 
 func update():
 	clear()
-	tilemap.compute_rectangle_with_hole(center, Vector2(1, 1) * 60 * 32, radius-clear_radius, set_sun_cell, [])
+	tilemap.compute_rectangle_with_hole(center, Vector2(1, 1)*(radius+width)*60,\
+	 radius-clear_width, set_sun_cell, [])
 	$shadow.global_position = center
 	$shadow.scale = Vector2(1, 1) * 1 / 20 * (radius + width) * 0.9
+	transfer_to_points()
+
+func transfer_to_points():
+	var cells = get_used_cells(0)
+	for cell in cells:
+		var src = get_cell_source_id(0, cell)
+		if src == 6:
+			tilemap.clear_cell(cell, 3)
+			tilemap.clear_cell(cell, 5)
+		else:
+			tilemap.set_cell(cell, src)
+	#$"../visuals".refresh(cells)
+	$"../visuals".update()
+	

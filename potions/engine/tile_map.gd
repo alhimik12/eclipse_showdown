@@ -20,6 +20,39 @@ func dec2bin(decimal_value):
 		count -= 1 
 	return binary_string
 
+func compute_ring(center, radius_main, radius, callable, arguments):
+	var center_cell = get_cell_coords(center, points)
+	var size = Vector2(radius_main * 2, radius_main * 2)
+	var radius_circ = radius_main / 20
+	var edges = [center.x - size.x/2, center.x + size.x/2,\
+	 center.y - size.y/2, center.y + size.y/2]
+	var up_left_corner = get_cell_coords(Vector2(edges[0], edges[2]), points)
+	var pointer = up_left_corner
+	var bounds = get_cell_coords(Vector2(center.x, edges[3]), points)
+	while pointer.y <= bounds.y:
+		pointer.x = up_left_corner.x
+		var dist_to_center = (pointer-center_cell).length()
+		while pointer.x <= bounds.x and dist_to_center >= radius:
+			if dist_to_center <= radius_circ:
+				print(radius_circ)
+				compute_cell(pointer, callable, arguments)
+				pointer.x += 1
+				dist_to_center = (pointer-center_cell).length()
+		pointer.y += 1
+	
+	var up_right_corner = get_cell_coords(Vector2(edges[1], edges[2]), points)
+	pointer = up_right_corner
+	bounds = get_cell_coords(Vector2(center.x, edges[3]), points )
+	while pointer.y <= bounds.y:
+		pointer.x = up_right_corner.x
+		var dist_to_center = (pointer-center_cell).length()
+		while pointer.x >= bounds.x and dist_to_center >= radius:
+			if dist_to_center <= radius_circ:
+				compute_cell(pointer, callable, arguments)
+				pointer.x -= 1
+				dist_to_center = (pointer-center_cell).length()
+		pointer.y += 1
+
 func compute_rectangle_with_hole(center, size, radius, callable, arguments):
 	var center_cell = get_cell_coords(center, points)
 	var edges = [center.x - size.x/2, center.x + size.x/2,\
@@ -112,6 +145,9 @@ func compute_straight_line(pointer: Vector2i, center: Vector2i, radius: float, d
 		changed_cells += compute_cell(pointer, callable, arguments)
 		pointer += direction
 	return changed_cells
+
+func set_cell(coords, type):
+	points.set_cell(0, coords, type, Vector2.ZERO)
 
 func fill_cell(coordinates: Vector2i, type: int = 0):
 	var new_type = alchemy.combine_elements(points.get_cell_source_id(0, coordinates), type)
