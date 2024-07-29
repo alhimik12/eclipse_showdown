@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://q7ce6itx4h0u"]
+[gd_scene load_steps=11 format=3 uid="uid://q7ce6itx4h0u"]
 
 [ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="1_eo1ai"]
 [ext_resource type="Script" path="res://characters/enemies/bug.gd" id="1_ugsu7"]
 [ext_resource type="PackedScene" uid="uid://cpqc7s0m87vw5" path="res://characters/components/effect_manager.tscn" id="3_a6v46"]
+[ext_resource type="Texture2D" uid="uid://cseajnytuwplf" path="res://textures/basic_shapes/cross.png" id="3_nhlvf"]
 [ext_resource type="PackedScene" uid="uid://sffcljjwysfa" path="res://characters/components/hp_manager.tscn" id="4_oxd28"]
 [ext_resource type="PackedScene" uid="uid://dix67g2ptb14f" path="res://characters/components/progress_bar.tscn" id="5_63lwt"]
 [ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="6_0h70e"]
@@ -19,6 +20,20 @@ script = ExtResource("1_ugsu7")
 modulate = Color(0.892919, 0.519314, 0.630538, 1)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_eo1ai")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.483026, 0.238533, 0.419269, 1)
+z_index = 1
+position = Vector2(-13, -9.53674e-07)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_nhlvf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.483026, 0.238533, 0.419269, 1)
+z_index = 1
+position = Vector2(14, 2.11758e-22)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_nhlvf")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

@@ -3,6 +3,7 @@ class_name tile_map_class extends Node2D
 @onready var alchemy = $alchemy_component
 @onready var points = $points
 @onready var visuals = $visuals
+@onready var sun = $sun
 var last_pos
 
 #var changed_cells = []
@@ -34,7 +35,6 @@ func compute_ring(center, radius_main, radius, callable, arguments):
 		var dist_to_center = (pointer-center_cell).length()
 		while pointer.x <= bounds.x and dist_to_center >= radius:
 			if dist_to_center <= radius_circ:
-				print(radius_circ)
 				compute_cell(pointer, callable, arguments)
 				pointer.x += 1
 				dist_to_center = (pointer-center_cell).length()

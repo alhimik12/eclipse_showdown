@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgoac66ct4t1f"]
+
+[ext_resource type="Script" path="res://characters/enemies/projectiles/slime_ball.gd" id="1_2kmmd"]
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="2_q7mc4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_84p4d"]
+radius = 16.0312
+
+[sub_resource type="Curve" id="Curve_454vu"]
+_data = [Vector2(0.011976, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.982036, 0.010989), -0.949224, 0.0, 0, 0]
+point_count = 2
+
+[node name="slime_ball" type="Node2D"]
+script = ExtResource("1_2kmmd")
+dmg = 35.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_84p4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.333333, 0.847059, 0.847059, 1)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_q7mc4")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 0.4
+texture = ExtResource("2_q7mc4")
+emission_shape = 1
+emission_sphere_radius = 20.27
+gravity = Vector2(0, 0)
+scale_amount_min = 0.02
+scale_amount_max = 0.06
+scale_amount_curve = SubResource("Curve_454vu")
+color = Color(0.427451, 0.603922, 1, 1)

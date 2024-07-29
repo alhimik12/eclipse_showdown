@@ -114,7 +114,7 @@ format = 2
 script = ExtResource("6_t3c8w")
 
 [node name="Timer" type="Timer" parent="sun"]
-wait_time = 0.2
+wait_time = 0.05
 one_shot = true
 autostart = true
 
@@ -124,6 +124,7 @@ z_index = -100
 texture = ExtResource("5_05058")
 
 [node name="visuals" type="TileMap" parent="."]
+z_index = -20
 position = Vector2(10, 10)
 scale = Vector2(0.1, 0.1)
 tile_set = SubResource("TileSet_cuxs2")

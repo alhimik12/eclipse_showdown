@@ -17,14 +17,10 @@ func activate():
 		knife.modulate = Color.DARK_GRAY
 	knife.distance = enemy.get_speed(distance) 
 	knife.duration = duration
+	knife.delay = delay
 	get_parent().get_parent().add_child(knife)
-	$Timer.start(delay)
 
 func use() -> bool:
 	if dist_to_player() <= distance * 1.5:
 		return super()
 	return false
-
-func timer_timeout():
-	if knife != null:
-		knife.init()

@@ -3,11 +3,14 @@ extends enemy_projectile_class
 var start_distance = 40
 var distance = 130
 var duration = 0.3
+var delay = 0.2
 
 func ready():
 	global_position = character.global_position
 	rotation = character.get_angle_to(character.player.global_position)
 	global_position += Vector2.RIGHT.rotated(rotation) * start_distance
+	$Timer.start(delay)
+
 
 func init():
 	var direction = Vector2.RIGHT.rotated(rotation)

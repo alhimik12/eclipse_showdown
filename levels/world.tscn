@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5tc8qv8jyaov"]
+[gd_scene load_steps=5 format=3 uid="uid://b5tc8qv8jyaov"]
 
 [ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://potions/engine/tile_map.tscn" id="1_i1v2g"]
 [ext_resource type="PackedScene" uid="uid://dyoudyalwy6v" path="res://characters/player/player.tscn" id="2_rxr7l"]
+[ext_resource type="PackedScene" uid="uid://x45u4wgns1kv" path="res://characters/enemies/slime.tscn" id="3_8edif"]
 [ext_resource type="PackedScene" uid="uid://q7ce6itx4h0u" path="res://characters/enemies/bug.tscn" id="3_e037o"]
 
 [node name="world" type="Node2D"]
@@ -13,11 +14,11 @@
 [node name="Camera2D" type="Camera2D" parent="player" groups=["camera"]]
 zoom = Vector2(1.5, 1.5)
 
+[node name="slime" parent="." instance=ExtResource("3_8edif")]
+position = Vector2(-365, 112)
+
 [node name="bug" parent="." instance=ExtResource("3_e037o")]
-position = Vector2(-200000, -3)
+position = Vector2(-179, -100)
 
 [node name="bug2" parent="." instance=ExtResource("3_e037o")]
-position = Vector2(-313, 157)
-
-[node name="bug3" parent="." instance=ExtResource("3_e037o")]
-position = Vector2(229, -212)
+position = Vector2(296, 132)

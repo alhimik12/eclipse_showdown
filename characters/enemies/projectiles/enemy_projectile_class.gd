@@ -1,12 +1,12 @@
 class_name enemy_projectile_class extends projectile_class
 
+@onready var player = get_tree().get_first_node_in_group("player")
 @export var elemental_color: bool = false
 
 func init():
 	pass
 
 func _ready():
-	print(modulate)
 	area2d.monitoring = true
 	area2d.area_entered.connect(area_entered)
 	if elemental_color:

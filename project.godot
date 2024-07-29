@@ -24,6 +24,16 @@ window/size/initial_position=Vector2i(0, 20)
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[file_customization]
+
+folder_colors={
+"res://characters/": "blue",
+"res://characters/enemies/": "red",
+"res://characters/enemies/projectiles/": "pink",
+"res://characters/player/": "green",
+"res://potions/": "orange"
+}
+
 [input]
 
 select_up={
@@ -89,4 +99,3 @@ loadup2={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)

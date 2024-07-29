@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://x45u4wgns1kv"]
+
+[ext_resource type="PackedScene" uid="uid://obhs6tqkno1" path="res://characters/enemies/enemy_template.tscn" id="1_74u02"]
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_gd8me"]
+[ext_resource type="Script" path="res://characters/enemies/slime.gd" id="2_gmxiq"]
+[ext_resource type="PackedScene" uid="uid://diomq7ktk2cds" path="res://characters/enemies/abilities/slimegun.tscn" id="4_w5esg"]
+
+[node name="slime" instance=ExtResource("1_74u02")]
+script = ExtResource("2_gmxiq")
+
+[node name="hp_manager" parent="." index="2" node_paths=PackedStringArray("hp_bar")]
+hp_bar = NodePath("../Progress_bar")
+
+[node name="Progress_bar" parent="." index="3"]
+position = Vector2(0, -50)
+
+[node name="visuals" type="Node2D" parent="." index="4"]
+scale = Vector2(1.6, 1.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="visuals" index="0"]
+modulate = Color(0.217874, 0.588277, 0.961465, 1)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("1_gd8me")
+
+[node name="Sprite2D2" type="Sprite2D" parent="visuals" index="1"]
+modulate = Color(0.0850704, 0.651883, 0.708155, 1)
+z_index = -1
+position = Vector2(-10, -5)
+scale = Vector2(0.053, 0.051)
+texture = ExtResource("1_gd8me")
+
+[node name="Sprite2D3" type="Sprite2D" parent="visuals" index="2"]
+modulate = Color(0.637206, 0.446807, 0.985787, 1)
+z_index = -1
+position = Vector2(5, 8)
+scale = Vector2(0.0625, 0.051)
+texture = ExtResource("1_gd8me")
+
+[node name="Sprite2D4" type="Sprite2D" parent="visuals" index="3"]
+modulate = Color(0.473932, 0.539113, 0.87455, 1)
+position = Vector2(7.90625, -9.5625)
+scale = Vector2(0.043625, 0.04175)
+texture = ExtResource("1_gd8me")
+
+[node name="Sprite2D5" type="Sprite2D" parent="visuals" index="4"]
+modulate = Color(0.323861, 0.377995, 0.747981, 1)
+z_index = -2
+position = Vector2(-6, 7)
+scale = Vector2(0.0598125, 0.050875)
+texture = ExtResource("1_gd8me")
+
+[node name="move_timer" type="Timer" parent="." index="5"]
+wait_time = 1.2
+
+[node name="shoot_timer" type="Timer" parent="." index="6"]
+wait_time = 1.2
+
+[node name="move_delay" type="Timer" parent="." index="7"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="slimegun" parent="." index="8" instance=ExtResource("4_w5esg")]
+
+[connection signal="timeout" from="move_timer" to="." method="move_timeout"]
+[connection signal="timeout" from="shoot_timer" to="." method="shoot_timeout"]
+[connection signal="timeout" from="move_delay" to="." method="delay_timeout"]

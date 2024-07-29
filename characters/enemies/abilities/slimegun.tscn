@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://diomq7ktk2cds"]
+
+[ext_resource type="Script" path="res://characters/enemies/abilities/slimegun.gd" id="1_gr72o"]
+
+[node name="slimegun" type="Node2D"]
+script = ExtResource("1_gr72o")
+cooldown = 1.2

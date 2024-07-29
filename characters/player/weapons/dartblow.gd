@@ -19,7 +19,6 @@ func shoot(time_modifier):
 		var proj_node = load(projectile).instantiate()
 		proj_node.character = char
 		if ammo != 0:
-			print(element)
 			proj_node.element = element
 		else:
 			proj_node.element = -1

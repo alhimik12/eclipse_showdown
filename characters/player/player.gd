@@ -8,6 +8,9 @@ func _ready():
 	gun1.init()
 	gun2.init()
 
+func die():
+	pass
+
 func process(delta):
 	var direction = Vector2(Input.get_axis("more_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
 	global_position += direction * base_speed * speed_change * delta * speed_multiplyer

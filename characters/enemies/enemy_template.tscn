@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://obhs6tqkno1"]
+
+[ext_resource type="PackedScene" uid="uid://cpqc7s0m87vw5" path="res://characters/components/effect_manager.tscn" id="1_c6h48"]
+[ext_resource type="PackedScene" uid="uid://sffcljjwysfa" path="res://characters/components/hp_manager.tscn" id="2_xspcv"]
+[ext_resource type="PackedScene" uid="uid://dix67g2ptb14f" path="res://characters/components/progress_bar.tscn" id="3_l23o4"]
+[ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="4_3nuew"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nlj30"]
+radius = 15.0333
+
+[node name="enemy_template" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_nlj30")
+
+[node name="effect_manager" parent="." instance=ExtResource("1_c6h48")]
+
+[node name="hp_manager" parent="." instance=ExtResource("2_xspcv")]
+hp_max = 30.0
+
+[node name="Progress_bar" parent="." instance=ExtResource("3_l23o4")]
+position = Vector2(0, -30)
+scale = Vector2(0.4, 0.4)
+length = 6.0
+color_progress = ExtResource("4_3nuew")
+centered = true

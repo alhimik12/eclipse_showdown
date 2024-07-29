@@ -1,11 +1,11 @@
 class_name projectile_class extends Node2D
 
-var character: character_class
+@onready var character: character_class
 var element: int
-@onready var tilemap = character.tilemap
+@onready var tilemap: tile_map_class = get_tree().get_first_node_in_group("tilemap")
 @onready var area2d: Area2D = get_node("Area2D")
 @onready var start_timer: Timer = Timer.new()
-@export var start_time = 0.08
+var start_time = 0.08
 var hp = 1
 @export var dmg: float = 10
 
