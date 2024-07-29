@@ -4,3 +4,4 @@ class_name enemy_class extends character_class
 
 func _ready():
 	super()
+	scorch_dmg *= 0.7

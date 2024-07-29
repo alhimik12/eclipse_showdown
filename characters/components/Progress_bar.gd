@@ -24,10 +24,7 @@ func _ready():
 	update()
 
 func change_progress_scale(k):
-	if k == 0:
-		$progress.scale.x = 0
-	else:
-		$progress.scale.x = length * k * scale_bg.x - delta_size
+	$progress.scale.x = max(length * k * scale_bg.x - delta_size, delta_size/2)
 
 func change_progress_position(k):
 	if not centered:

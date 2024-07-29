@@ -6,7 +6,7 @@
 [ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="4_3nuew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nlj30"]
-radius = 15.0333
+radius = 43.0465
 
 [node name="enemy_template" type="Node2D"]
 

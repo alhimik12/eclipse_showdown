@@ -17,7 +17,7 @@ var water_speed = 0.4
 var water_heal = 10
 var fire_speed = 1.8
 var light_reload = 0.3
-var ligh_dmg = 0.55
+var light_dmg = 0.55
 var scorch_dmg = 45
 
 func die():
@@ -67,7 +67,7 @@ func _process(delta):
 			wall_hit()
 			effect_manager.apply_effect("stun")
 		3:
-			move_damage(ligh_dmg, delta)
+			move_damage(light_dmg, delta)
 			reload_change = light_reload
 		4:
 			can_attack = false
