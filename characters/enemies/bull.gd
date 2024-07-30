@@ -8,6 +8,7 @@ var center_attraction = 0.7
 var rotation_speed = 3
 var speed = 100
 var start_velocity = 8
+var dash_dmg = 30
 
 func ready():
 	light_dmg *= 0.7
@@ -25,8 +26,11 @@ func stop_dash():
 	dashing = false
 	$attack.hide()
 	$walk_duration.start()
+	$dash_duration.stop()
 
 func process(delta):
+	if not can_attack and not $dash_duration.is_stopped():
+		stop_dash()
 	if dashing:
 		dash(delta)
 	else:
@@ -49,3 +53,9 @@ func dash(delta):
 	global_position += (get_speed(velocity)+velocity)*0.5
 	rotation = velocity.angle()
 	#$Progress_bar.global_rotation = 0
+
+
+func area_entered(area):
+	var target = area.get_parent()
+	target.get_damage(dash_dmg)
+	get_damage(2)

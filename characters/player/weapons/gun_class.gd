@@ -2,9 +2,9 @@ class_name gun_class extends Node2D
 
 var char: character_class
 var tilemap
-
+var element = 2
 @export_file("*.tscn") var projectile
-var element: int
+
 
 var load_timer = Timer.new()
 @export var reload_time: float = 1

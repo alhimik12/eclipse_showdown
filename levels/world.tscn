@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5tc8qv8jyaov"]
+[gd_scene load_steps=5 format=3 uid="uid://b5tc8qv8jyaov"]
 
 [ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://potions/engine/tile_map.tscn" id="1_i1v2g"]
 [ext_resource type="PackedScene" uid="uid://dyoudyalwy6v" path="res://characters/player/player.tscn" id="2_rxr7l"]
-[ext_resource type="PackedScene" uid="uid://dgjhpr7cft5vo" path="res://characters/enemies/bull.tscn" id="3_cacvx"]
-[ext_resource type="PackedScene" uid="uid://x45u4wgns1kv" path="res://characters/enemies/slime.tscn" id="4_54krx"]
-[ext_resource type="PackedScene" uid="uid://q7ce6itx4h0u" path="res://characters/enemies/bug.tscn" id="5_ybvvk"]
+[ext_resource type="PackedScene" uid="uid://b8r21ctjjlrnu" path="res://misc/enemy_spawner.tscn" id="3_sy38x"]
+[ext_resource type="PackedScene" uid="uid://cjx5n65hh86a2" path="res://levels/interface/escape_menu.tscn" id="4_kqg82"]
 
 [node name="world" type="Node2D"]
 
@@ -15,11 +14,6 @@
 [node name="Camera2D" type="Camera2D" parent="player" groups=["camera"]]
 zoom = Vector2(1.5, 1.5)
 
-[node name="bull" parent="." instance=ExtResource("3_cacvx")]
-position = Vector2(-307, 23)
+[node name="enemy_spawner" parent="." instance=ExtResource("3_sy38x")]
 
-[node name="slime" parent="." instance=ExtResource("4_54krx")]
-position = Vector2(-42, 226)
-
-[node name="bug" parent="." instance=ExtResource("5_ybvvk")]
-position = Vector2(275, -98)
+[node name="escape_menu" parent="." instance=ExtResource("4_kqg82")]

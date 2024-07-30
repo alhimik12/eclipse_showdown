@@ -15,7 +15,7 @@ radius = 37.4833
 _data = [Vector2(0.011976, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.982036, 0.010989), -2.93626, 0.0, 0, 0]
 point_count = 2
 
-[node name="bull" instance=ExtResource("1_flhto")]
+[node name="bull" groups=["enemy"] instance=ExtResource("1_flhto")]
 script = ExtResource("2_8s7dp")
 
 [node name="hp_manager" parent="." index="2" node_paths=PackedStringArray("hp_bar")]
@@ -61,6 +61,7 @@ one_shot = true
 autostart = true
 
 [node name="attack" type="Node2D" parent="." index="7"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="attack" index="0"]
 modulate = Color(0.88, 0.176, 0.187733, 0.333333)
@@ -92,3 +93,4 @@ scale_amount_curve = SubResource("Curve_yxkl8")
 color = Color(1, 0, 0.14902, 0.392157)
 
 [connection signal="timeout" from="dash_duration" to="." method="stop_dash"]
+[connection signal="area_entered" from="attack/Area2D" to="." method="area_entered"]

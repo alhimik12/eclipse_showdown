@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://un1ynxv1xra"]
+
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_3rpdy"]
+[ext_resource type="Script" path="res://characters/enemies/projectiles/bomb.gd" id="1_gyn5b"]
+[ext_resource type="Texture2D" uid="uid://cseajnytuwplf" path="res://textures/basic_shapes/cross.png" id="2_q37yf"]
+[ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="4_4gjmu"]
+
+[sub_resource type="Animation" id="Animation_8leuj"]
+resource_name = "blink"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.353553, 0.25, 1),
+"update": 0,
+"values": [Color(1, 0.367365, 0.172127, 1), Color(1, 1, 1, 1), Color(1, 0.367365, 0.172127, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0r1gg"]
+_data = {
+"blink": SubResource("Animation_8leuj")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvj3r"]
+radius = 119.269
+
+[node name="bomb" type="Node2D"]
+script = ExtResource("1_gyn5b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.125911, 0.125911, 0.125911, 1)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_3rpdy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.938825, 0.687203, 0, 1)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_q37yf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.938825, 0.687203, 0, 1)
+z_index = -2
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("4_4gjmu")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0.938825, 0.687203, 0, 1)
+z_index = -2
+rotation = 0.785398
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("4_4gjmu")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0r1gg")
+}
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mvj3r")
+
+[connection signal="timeout" from="timer" to="." method="timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="activate"]

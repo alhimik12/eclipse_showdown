@@ -49,7 +49,7 @@ func update():
 	tilemap.compute_rectangle_with_hole(center, Vector2(1, 1)*(radius+width)*60,\
 	 radius-clear_width, set_sun_cell, [])
 	$shadow.global_position = center
-	$shadow.scale = Vector2(1, 1) * 1 / 20 * (radius + width) * 0.9
+	$shadow.scale = Vector2(1, 1) * 1 / 20 * (radius + width) * 0.72
 	transfer_to_points()
 
 func transfer_to_points():

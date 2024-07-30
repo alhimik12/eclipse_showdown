@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://hddp1vovly20"]
+
+[ext_resource type="FontFile" uid="uid://bg0dgxai68vii" path="res://misc/FiraMono-Bold.ttf" id="1_d7mne"]
+[ext_resource type="Script" path="res://levels/interface/death_menu.gd" id="1_jveio"]
+[ext_resource type="FontFile" uid="uid://d2xc3bvndpihv" path="res://misc/FiraMono-Medium.ttf" id="1_v6lbb"]
+
+[sub_resource type="Theme" id="Theme_huy6w"]
+default_font = ExtResource("1_d7mne")
+default_font_size = 100
+
+[sub_resource type="Theme" id="Theme_sae8q"]
+default_font = ExtResource("1_d7mne")
+default_font_size = 80
+
+[sub_resource type="Theme" id="Theme_yc1ar"]
+default_font = ExtResource("1_v6lbb")
+default_font_size = 60
+
+[node name="death_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jveio")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0.239216, 0.239216, 0.380392)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GAME OVER" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_huy6w")
+text = "GAME OVER!"
+horizontal_alignment = 1
+
+[node name="WAVE" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_sae8q")
+text = "WAVE:"
+horizontal_alignment = 1
+
+[node name="RESTART" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_yc1ar")
+text = "RESTART"
+
+[node name="RESTART WITH RANDOM" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_yc1ar")
+text = "RESTART WITH RANDOM LOADOUT"
+
+[node name="EXIT" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_yc1ar")
+text = "EXIT TO MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/RESTART" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]

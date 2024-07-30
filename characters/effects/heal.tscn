@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gsryo48x56xc"]
+
+[ext_resource type="Script" path="res://characters/effects/heal.gd" id="1_6wdvg"]
+
+[node name="heal" type="Node2D"]
+script = ExtResource("1_6wdvg")
+duration = 4.0
+effect_name = "heal"

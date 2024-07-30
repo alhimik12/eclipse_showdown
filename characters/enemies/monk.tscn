@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://i5spmy3spysb"]
+
+[ext_resource type="PackedScene" uid="uid://obhs6tqkno1" path="res://characters/enemies/enemy_template.tscn" id="1_mgtnu"]
+[ext_resource type="Script" path="res://characters/enemies/monk.gd" id="2_hdroy"]
+[ext_resource type="Texture2D" uid="uid://ladlu0kugy30" path="res://textures/basic_shapes/plus.png" id="2_nm282"]
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="3_8bxv6"]
+
+[node name="monk" groups=["enemy"] instance=ExtResource("1_mgtnu")]
+script = ExtResource("2_hdroy")
+
+[node name="hp_manager" parent="." index="2" node_paths=PackedStringArray("hp_bar")]
+hp_bar = NodePath("../Progress_bar")
+hp_max = 50.0
+
+[node name="Progress_bar" parent="." index="3"]
+position = Vector2(0, -40)
+
+[node name="visuals" type="Node2D" parent="." index="4"]
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="visuals" index="0"]
+modulate = Color(0.6928, 0.503151, 0.356125, 1)
+z_index = -1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_nm282")
+
+[node name="Sprite2D2" type="Sprite2D" parent="visuals" index="1"]
+modulate = Color(0.996412, 0.761433, 3.85046e-07, 1)
+rotation = 0.785398
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_nm282")
+
+[node name="Circle" type="Sprite2D" parent="visuals" index="2"]
+modulate = Color(0.949915, 0.928793, 0.707715, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_8bxv6")
+
+[node name="dash_cooldown" type="Timer" parent="." index="5"]
+wait_time = 3.0
+one_shot = true
+
+[node name="dart_timer" type="Timer" parent="." index="6"]
+wait_time = 2.0
+one_shot = true
+autostart = true

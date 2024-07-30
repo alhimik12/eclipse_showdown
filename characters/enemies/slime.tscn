@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://characters/enemies/slime.gd" id="2_gmxiq"]
 [ext_resource type="PackedScene" uid="uid://diomq7ktk2cds" path="res://characters/enemies/abilities/slimegun.tscn" id="4_w5esg"]
 
-[node name="slime" instance=ExtResource("1_74u02")]
+[node name="slime" groups=["enemy"] instance=ExtResource("1_74u02")]
 script = ExtResource("2_gmxiq")
 
 [node name="hp_manager" parent="." index="2" node_paths=PackedStringArray("hp_bar")]
@@ -53,16 +53,12 @@ texture = ExtResource("1_gd8me")
 [node name="move_timer" type="Timer" parent="." index="5"]
 wait_time = 1.2
 
-[node name="shoot_timer" type="Timer" parent="." index="6"]
-wait_time = 1.2
-
-[node name="move_delay" type="Timer" parent="." index="7"]
+[node name="move_delay" type="Timer" parent="." index="6"]
 wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="slimegun" parent="." index="8" instance=ExtResource("4_w5esg")]
+[node name="slimegun" parent="." index="7" instance=ExtResource("4_w5esg")]
 
 [connection signal="timeout" from="move_timer" to="." method="move_timeout"]
-[connection signal="timeout" from="shoot_timer" to="." method="shoot_timeout"]
 [connection signal="timeout" from="move_delay" to="." method="delay_timeout"]

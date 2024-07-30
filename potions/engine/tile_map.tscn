@@ -121,6 +121,7 @@ autostart = true
 [node name="shadow" type="Sprite2D" parent="sun"]
 modulate = Color(0.141176, 0.141176, 0.141176, 1)
 z_index = -100
+scale = Vector2(2, 2)
 texture = ExtResource("5_05058")
 
 [node name="visuals" type="TileMap" parent="."]

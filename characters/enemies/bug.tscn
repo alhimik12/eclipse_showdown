@@ -13,23 +13,23 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wbmoe"]
 radius = 15.0333
 
-[node name="bug" type="Node2D"]
+[node name="bug" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_ugsu7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.892919, 0.519314, 0.630538, 1)
+modulate = Color(0.953635, 0.37996, 0.421024, 1)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_eo1ai")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.483026, 0.238533, 0.419269, 1)
+modulate = Color(0.615686, 0.239216, 0.419608, 1)
 z_index = 1
 position = Vector2(-13, -9.53674e-07)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_nhlvf")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0.483026, 0.238533, 0.419269, 1)
+modulate = Color(0.615686, 0.239216, 0.419608, 1)
 z_index = 1
 position = Vector2(14, 2.11758e-22)
 scale = Vector2(0.05, 0.05)

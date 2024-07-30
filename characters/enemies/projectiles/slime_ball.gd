@@ -9,5 +9,5 @@ func ready():
 	direction = Vector2.RIGHT.rotated(rotation)
 
 
-func _process(delta):
+func process(delta):
 	global_position += direction * speed

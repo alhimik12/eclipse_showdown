@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkblhihiv4k7b"]
+
+[ext_resource type="PackedScene" uid="uid://dyoudyalwy6v" path="res://characters/player/player.tscn" id="1_upgm1"]
+[ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://potions/engine/tile_map.tscn" id="2_p7g81"]
+[ext_resource type="PackedScene" uid="uid://cjx5n65hh86a2" path="res://levels/interface/escape_menu.tscn" id="3_3q3v4"]
+[ext_resource type="Theme" uid="uid://4it2e4wjpwh0" path="res://misc/tutorial_text.tres" id="4_wskeb"]
+[ext_resource type="Script" path="res://levels/element_showcase.gd" id="4_xt843"]
+
+[node name="tutorial" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_upgm1")]
+
+[node name="Camera2D" type="Camera2D" parent="player" groups=["camera"]]
+zoom = Vector2(1.5, 1.5)
+
+[node name="TileMap" parent="." instance=ExtResource("2_p7g81")]
+
+[node name="escape_menu" parent="." instance=ExtResource("3_3q3v4")]
+
+[node name="tutorial_text" type="Control" parent="escape_menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="elements" type="TabContainer" parent="escape_menu/tutorial_text"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -311.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+theme = ExtResource("4_wskeb")
+
+[node name="elements" type="RichTextLabel" parent="escape_menu/tutorial_text/elements"]
+layout_mode = 2
+theme = ExtResource("4_wskeb")
+text = "Elements are colorful puddles on the ground. there are 5 elements in the game:
+1) Water (blue). heals and slows down
+2) Fire (red). increases speed, but applies burning effect (deals damage for some time even after leaving fire puddle)
+3) Earth (green). walls made from earth can destroy projectiles. characters can break wall when touching it
+4) Light (yellow). increases attack speed, but deals damage when you move on it (the faster you move, the more damage you get)
+5) Cold (purple). turns off attacking
+6) Scorching (white). deals very big amount of damage"
+
+[node name="guns and controls" type="RichTextLabel" parent="escape_menu/tutorial_text/elements"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_wskeb")
+text = "use WASD to move, ESC to pause
+
+Player has 2 weapons. each weapon is of different type and can have different elements loaded in it.
+use LMB to shoot with first weapon. RMB to shoot with second one
+
+To load element into a weapon, press Q for first weapon and E for second one.
+keep in mind that to load element you need to stay on it when pressing load button (for earth, press load right after bumping into it).
+some weapons have limited ammo. and need to be loaded with elements to shoot again (you second weapon works like that)"
+
+[node name="alchemy" type="RichTextLabel" parent="escape_menu/tutorial_text/elements"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_wskeb")
+text = "when one element is cast in the place, where there is other element already, they combine.
+for example combining Fire with Light will create Scorching element.
+Some elements destroy each other when combined (Fire and Earth, Cold and Scorching)
+try combining different elements to see the results
+TIP: having Water and Light is enough to get any other element"
+
+[node name="eclipse" type="RichTextLabel" parent="escape_menu/tutorial_text/elements"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_wskeb")
+text = "Sun became so powerful that the only way to survive is to stay in shadows. in this game, you fight in the shadow of the eclipse.
+you can notice that on the edges of shadow there are 2 elements: Light and Scorching. Elements caused by sun work just like regular elements and you can combine them with other elements.
+you get scorched by sun even if you replace Scorching element with something else
+
+Thats it. press ESC to pause and exit to main menu"
+
+[node name="element_showcase" type="Node2D" parent="."]
+script = ExtResource("4_xt843")

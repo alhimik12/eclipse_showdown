@@ -11,10 +11,10 @@ var reload_change = 1
 var not_frozen = true
 var can_attack = true
 var previous_position = Vector2.ZERO
-var break_radius = 3
+var break_radius = 2.75
 
 var water_speed = 0.4
-var water_heal = 10
+var water_heal = 15
 var fire_speed = 1.8
 var light_reload = 0.3
 var light_dmg = 0.55
@@ -24,6 +24,9 @@ func die():
 	queue_free()
 
 func _ready():
+	ready()
+
+func ready():
 	pass
 
 func wall_hit():
@@ -44,8 +47,6 @@ func get_speed(spd):
 	
 
 func _process(delta):
-	speed_change = 1
-	reload_change = 1
 	can_attack = true
 	
 	if not not_frozen:
@@ -53,7 +54,7 @@ func _process(delta):
 	
 	var cell_type = tilemap.get_cell_type(global_position)
 	var sun = tilemap.get_node("sun")
-	if global_position.distance_to(sun.center) > (sun.radius + sun.width) * 20:
+	if global_position.distance_to(sun.center) > (sun.radius + sun.width) * 18:
 		cell_type = 5
 	match cell_type:
 		0:
@@ -79,6 +80,8 @@ func _process(delta):
 	process(delta)
 	if can_attack:
 		attack(delta)
+	speed_change = 1
+	reload_change = 1
 
 func attack(delta):
 	pass

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkrj6yrucif3o"]
+
+[ext_resource type="Script" path="res://characters/effects/fast_reload.gd" id="1_25kng"]
+
+[node name="fast_reload" type="Node2D"]
+script = ExtResource("1_25kng")
+duration = 3.0
+effect_name = "fast_reload"

@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8m26cqtqfevh"]
+
+[ext_resource type="Script" path="res://levels/interface/loadout_chooser.gd" id="1_p8j14"]
+[ext_resource type="FontFile" uid="uid://bg0dgxai68vii" path="res://misc/FiraMono-Bold.ttf" id="2_ig6h1"]
+[ext_resource type="FontFile" uid="uid://d2xc3bvndpihv" path="res://misc/FiraMono-Medium.ttf" id="3_eo5hp"]
+
+[sub_resource type="Theme" id="Theme_ws23d"]
+default_font = ExtResource("2_ig6h1")
+default_font_size = 100
+
+[sub_resource type="Theme" id="Theme_83ml7"]
+default_font = ExtResource("3_eo5hp")
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_ugghf"]
+default_font = ExtResource("3_eo5hp")
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_ge37c"]
+default_font = ExtResource("2_ig6h1")
+default_font_size = 100
+
+[sub_resource type="Theme" id="Theme_v5fic"]
+default_font = ExtResource("2_ig6h1")
+default_font_size = 60
+
+[node name="loadout_chooser" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8j14")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -731.0
+offset_top = -250.5
+offset_right = 731.0
+offset_bottom = 250.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ws23d")
+text = "CHOOSE LOADOUT"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_83ml7")
+alignment = 1
+item_count = 4
+popup/item_0/text = "ball_wand"
+popup/item_0/id = 0
+popup/item_1/text = "leaky_gun"
+popup/item_1/id = 1
+popup/item_2/text = "dartblow"
+popup/item_2/id = 2
+popup/item_3/text = "antimatter_gauntlet"
+popup/item_3/id = 3
+
+[node name="OptionButton2" type="OptionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_83ml7")
+alignment = 1
+item_count = 6
+allow_reselect = true
+popup/item_0/text = "water"
+popup/item_0/id = 0
+popup/item_1/text = "fire"
+popup/item_1/id = 1
+popup/item_2/text = "earth"
+popup/item_2/id = 2
+popup/item_3/text = "light"
+popup/item_3/id = 3
+popup/item_4/text = "cold"
+popup/item_4/id = 4
+popup/item_5/text = "scorching"
+popup/item_5/id = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_ugghf")
+text = "first weapon
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_83ml7")
+alignment = 1
+item_count = 4
+popup/item_0/text = "ball_wand"
+popup/item_0/id = 0
+popup/item_1/text = "leaky_gun"
+popup/item_1/id = 1
+popup/item_2/text = "dartblow"
+popup/item_2/id = 2
+popup/item_3/text = "antimatter_gauntlet"
+popup/item_3/id = 3
+
+[node name="OptionButton2" type="OptionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_83ml7")
+alignment = 1
+item_count = 6
+allow_reselect = true
+popup/item_0/text = "water"
+popup/item_0/id = 0
+popup/item_1/text = "fire"
+popup/item_1/id = 1
+popup/item_2/text = "earth"
+popup/item_2/id = 2
+popup/item_3/text = "light"
+popup/item_3/id = 3
+popup/item_4/text = "cold"
+popup/item_4/id = 4
+popup/item_5/text = "scorching"
+popup/item_5/id = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_ugghf")
+text = "second weapon
+"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_ge37c")
+text = "START"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+modulate = Color(1, 0.223529, 0.262745, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -742.0
+offset_top = -185.0
+offset_right = 734.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_ugghf")
+text = "you gotta pick something for every option
+"
+
+[node name="randomize" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v5fic")
+text = "RANDOMIZE"
+
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_start_button_down"]
+[connection signal="pressed" from="randomize" to="." method="randomize_pressed"]

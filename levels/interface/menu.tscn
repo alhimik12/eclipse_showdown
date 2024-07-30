@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://d5whhmeu71gd"]
+
+[ext_resource type="Script" path="res://levels/interface/menu.gd" id="1_1k5of"]
+[ext_resource type="FontFile" uid="uid://d2xc3bvndpihv" path="res://misc/FiraMono-Medium.ttf" id="1_a438f"]
+[ext_resource type="PackedScene" uid="uid://b8m26cqtqfevh" path="res://levels/interface/loadout_chooser.tscn" id="2_esnuq"]
+[ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="4_0d4iv"]
+
+[sub_resource type="Theme" id="Theme_cq0yo"]
+default_font = ExtResource("1_a438f")
+default_font_size = 80
+
+[sub_resource type="Curve" id="Curve_axgfr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.261411, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mdbu7"]
+curve = SubResource("Curve_axgfr")
+
+[sub_resource type="Gradient" id="Gradient_t57yi"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.220657, 0.422535, 0.638498)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.461017, 0.392737, 1, 0.349715, 0.421084, 1, 1, 0.461028, 1, 0.429352, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qj2y"]
+gradient = SubResource("Gradient_t57yi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pul4u"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(900, 500, 1)
+angle_min = -341.1
+angle_max = 319.5
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -25.3
+linear_accel_max = 28.36
+radial_accel_min = -61.19
+radial_accel_max = 11.94
+tangential_accel_min = -35.82
+tangential_accel_max = 46.26
+scale_min = 0.5
+color = Color(1, 1, 1, 0.305882)
+color_ramp = SubResource("GradientTexture1D_8qj2y")
+alpha_curve = SubResource("CurveTexture_mdbu7")
+turbulence_noise_strength = 11.86
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1k5of")
+
+[node name="loadout_chooser" parent="." instance=ExtResource("2_esnuq")]
+visible = false
+layout_mode = 1
+
+[node name="main_menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbox" type="VBoxContainer" parent="main_menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -52.5
+offset_right = 124.0
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="main_menu/vbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_cq0yo")
+text = "START"
+
+[node name="tutorial" type="Button" parent="main_menu/vbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_cq0yo")
+text = "TUTORIAL"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -30
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.125051, 0.070744, 0.154184, 1)
+
+[node name="Control" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect/Control"]
+modulate = Color(1, 1, 1, 0.478431)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_pul4u")
+texture = ExtResource("4_0d4iv")
+lifetime = 4.0
+speed_scale = 0.5
+
+[connection signal="pressed" from="main_menu/vbox/Button" to="." method="start_pressed"]
+[connection signal="pressed" from="main_menu/vbox/tutorial" to="." method="_on_tutorial_pressed"]
