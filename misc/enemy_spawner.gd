@@ -41,6 +41,7 @@ func spawn_wave():
 		spawn_enemy("bug")
 	cost = 0
 	wave_count += 1
+	LevelVariables.wave = wave_count
 	
 func random_circle(center, radius):
 	return Vector2.RIGHT.rotated(randf_range(-PI, PI)) * randf_range(0, radius**2)**0.5 + center
