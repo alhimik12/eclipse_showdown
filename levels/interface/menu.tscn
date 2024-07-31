@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d5whhmeu71gd"]
+[gd_scene load_steps=13 format=3 uid="uid://d5whhmeu71gd"]
 
 [ext_resource type="Script" path="res://levels/interface/menu.gd" id="1_1k5of"]
 [ext_resource type="FontFile" uid="uid://d2xc3bvndpihv" path="res://misc/FiraMono-Medium.ttf" id="1_a438f"]
 [ext_resource type="PackedScene" uid="uid://b8m26cqtqfevh" path="res://levels/interface/loadout_chooser.tscn" id="2_esnuq"]
 [ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="4_0d4iv"]
+[ext_resource type="PackedScene" uid="uid://cpogr66asdgb3" path="res://levels/interface/settings.tscn" id="4_3xpmh"]
 [ext_resource type="AudioStream" uid="uid://drfoidvv28k5j" path="res://audio/music/white_space.mp3" id="5_qo8c7"]
 
 [sub_resource type="Theme" id="Theme_cq0yo"]
@@ -97,6 +98,18 @@ size_flags_vertical = 4
 theme = SubResource("Theme_cq0yo")
 text = "TUTORIAL"
 
+[node name="settings" type="Button" parent="main_menu/vbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_cq0yo")
+text = "SETTINGS
+"
+
+[node name="settings" parent="." instance=ExtResource("4_3xpmh")]
+visible = false
+layout_mode = 1
+
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -30
 layout_mode = 1
@@ -133,6 +146,8 @@ speed_scale = 0.5
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_qo8c7")
 autoplay = true
+bus = &"music"
 
 [connection signal="pressed" from="main_menu/vbox/Button" to="." method="start_pressed"]
 [connection signal="pressed" from="main_menu/vbox/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="main_menu/vbox/settings" to="." method="_on_settings_pressed"]

@@ -1,6 +1,6 @@
 extends enemy_class
 
-var duration = 0.2
+var duration = 0.3
 var bomb_sc = preload("res://characters/enemies/projectiles/bomb.tscn")
 var dart_sc = preload("res://characters/enemies/projectiles/enemy_dart.tscn")
 
@@ -9,7 +9,7 @@ func process(delta):
 	if player_vec.length() > 200:
 		pass
 	elif $dash_cooldown.is_stopped():
-		var new_position = global_position + player_vec.normalized() * 200
+		var new_position = global_position + player_vec.normalized() * 150
 		var tween = create_tween()
 		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 		#tween.finished.connect(die)

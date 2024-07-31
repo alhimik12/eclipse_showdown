@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpogr66asdgb3"]
+
+[ext_resource type="Script" path="res://levels/interface/settings.gd" id="1_1exfr"]
+[ext_resource type="FontFile" uid="uid://d2xc3bvndpihv" path="res://misc/FiraMono-Medium.ttf" id="1_8j15a"]
+
+[sub_resource type="Theme" id="Theme_jh7wk"]
+default_font = ExtResource("1_8j15a")
+default_font_size = 60
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1exfr")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -500.0
+offset_right = 400.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_jh7wk")
+text = "master volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+min_value = -60.0
+max_value = 10.0
+step = 0.5
+value = -5.0
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_jh7wk")
+text = "sfx volume"
+horizontal_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+min_value = -60.0
+max_value = 10.0
+step = 0.5
+value = -5.0
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_jh7wk")
+text = "music volume"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+min_value = -60.0
+max_value = 10.0
+step = 0.5
+value = -5.0
+
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HSlider" to="." method="master_slider"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HSlider3" to="." method="sfx_slider"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HSlider2" to="." method="music_slider"]

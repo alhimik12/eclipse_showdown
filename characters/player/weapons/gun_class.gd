@@ -34,6 +34,13 @@ func shoot(time_modifier):
 		get_parent().get_parent().add_child(proj_node)
 		after_shoot()
 		shoot_timer.start(time_modifier * shoot_time)
+		play_sound()
+
+func play_sound():
+	if has_node("sound"):
+		get_node("sound").play()
+	else:
+		Sfx.play("shoot_antimatter.mp3", 1, -8)
 
 func loadup_call():
 	if load_timer.is_stopped():

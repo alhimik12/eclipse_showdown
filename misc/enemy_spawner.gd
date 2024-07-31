@@ -22,7 +22,7 @@ func _ready():
 	spawn_wave()
 
 func get_wave_cost(wave):
-	return 8 + wave * 2
+	return 6 + wave * 2
 
 func enemy_died(enemy):
 	if len(get_tree().get_nodes_in_group("enemy")) == 1:

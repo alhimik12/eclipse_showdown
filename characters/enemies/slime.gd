@@ -12,7 +12,8 @@ func die():
 
 func wall_hit():
 	super()
-	tween.stop()
+	if tween:
+		tween.stop()
 
 func move_timeout():
 	var rot = get_angle_to(tilemap.sun.center)

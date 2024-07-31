@@ -11,6 +11,7 @@ func random_play():
 func play(path):
 	var player: AudioStreamPlayer = AudioStreamPlayer.new()
 	player.stream = load('res://audio/music/' + path + ".mp3")
+	player.bus = &'music'
 	add_child(player)
 	player.finished.connect(finished)
 	player.play()

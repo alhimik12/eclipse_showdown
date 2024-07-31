@@ -24,3 +24,4 @@ func shoot(time_modifier):
 				after_shoot()
 			ammo -= 1
 			shoot_timer.start(time_modifier * shoot_time)
+			play_sound()
