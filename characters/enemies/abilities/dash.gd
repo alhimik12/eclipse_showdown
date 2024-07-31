@@ -6,6 +6,7 @@ var distance = 400
 var tween: Tween
 
 func activate():
+	$dash_sound.play()
 	var direction = enemy.global_position.angle_to_point(player.global_position)
 	if (enemy.global_position-player.global_position).length() <= distance:
 		if randi_range(0, 1) == 1:

@@ -3,6 +3,7 @@ extends Control
 var menu_type = 0
 
 func start_pressed():
+	Sfx.play("click.mp3")
 	$main_menu.hide()
 	$loadout_chooser.show()
 	menu_type = 1
@@ -16,4 +17,5 @@ func _process(delta):
 
 
 func _on_tutorial_pressed():
+	Sfx.play("click.mp3")
 	get_tree().change_scene_to_file("res://levels/tutorial.tscn")

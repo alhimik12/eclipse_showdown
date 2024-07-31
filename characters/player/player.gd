@@ -25,14 +25,24 @@ func process(delta):
 	if Input.is_action_pressed("loadup2"):
 		gun2.loadup_call()
 
-#func attack(delta):
-	#if Input.is_action_pressed("attack1"):
-		#gun1.shoot(reload_change)
-	#if Input.is_action_pressed("attack2"):
-		#gun2.shoot(reload_change)
+func attack(delta):
+	if is_attack1_pressed:
+		gun1.shoot(reload_change)
+	if is_attack2_pressed:
+		gun2.shoot(reload_change)
+
+var is_attack1_pressed = false
+var is_attack2_pressed = false
 
 func _unhandled_input(event):
-	if event.is_action("attack1") and event.pressed and can_attack:
-		gun1.shoot(reload_change)
-	if event.is_action("attack2") and event.pressed and can_attack:
-		gun2.shoot(reload_change)
+	if event.is_action("attack1"):
+		if event.pressed:
+			is_attack1_pressed = true
+		else:
+			is_attack1_pressed = false
+	
+	if event.is_action("attack2"):
+		if event.pressed:
+			is_attack2_pressed = true
+		else:
+			is_attack2_pressed = false

@@ -17,9 +17,10 @@ func ready():
 func start_dash():
 	if can_attack:
 		dashing = true
-	$dash_duration.start()
-	$attack.show()
-	velocity = Vector2.RIGHT.rotated(rotation) * start_velocity
+		$dash_duration.start()
+		$attack.show()
+		$attack_sound.play()
+		velocity = Vector2.RIGHT.rotated(rotation) * start_velocity
 
 func stop_dash():
 	velocity = Vector2.ZERO

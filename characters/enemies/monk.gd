@@ -16,6 +16,8 @@ func process(delta):
 		tween.tween_property(self, "global_position", new_position, duration)
 		$dash_cooldown.start()
 		spawn_bomb()
+		
+		$dash_sound.play()
 
 func attack(delta):
 	if $dart_timer.is_stopped():
@@ -24,6 +26,8 @@ func attack(delta):
 		dart.element = randi_range(0, 5)
 		get_tree().current_scene.add_child(dart)
 		$dart_timer.start()
+		
+		$shoot_sound.play()
 
 
 func spawn_bomb():

@@ -14,6 +14,7 @@ var enemy_names = []
 var enemy_amount
 
 func _ready():
+	randomize()
 	biggest_cost = 10
 	lowest_cost = 4
 	enemy_names = enemy_costs.keys()
@@ -23,15 +24,16 @@ func _ready():
 func get_wave_cost(wave):
 	return 8 + wave * 2
 
-func enemy_died():
+func enemy_died(enemy):
 	if len(get_tree().get_nodes_in_group("enemy")) == 1:
+		print(enemy, wave_count)
 		spawn_wave()
 
 func spawn_wave():
 	cost = get_wave_cost(wave_count)
 	if randf_range(1, 10) <= 7:
 		spawn_enemy("slime")
-	while cost >= biggest_cost:
+	while cost > 0:
 		spawn_enemy(enemy_names[randi_range(0, enemy_amount-1)])
 	while cost >= lowest_cost:
 		for i in enemy_names:
@@ -45,6 +47,10 @@ func spawn_wave():
 	
 func random_circle(center, radius):
 	return Vector2.RIGHT.rotated(randf_range(-PI, PI)) * randf_range(0, radius**2)**0.5 + center
+
+func get_keys():
+	return enemy_costs.keys.shuffle()
+	
 
 func spawn_enemy(enemy):
 	cost -= enemy_costs[enemy]

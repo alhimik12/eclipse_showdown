@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://x45u4wgns1kv"]
+[gd_scene load_steps=8 format=3 uid="uid://x45u4wgns1kv"]
 
 [ext_resource type="PackedScene" uid="uid://obhs6tqkno1" path="res://characters/enemies/enemy_template.tscn" id="1_74u02"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_gd8me"]
 [ext_resource type="Script" path="res://characters/enemies/slime.gd" id="2_gmxiq"]
+[ext_resource type="AudioStream" uid="uid://b8qviy7bfhtrq" path="res://audio/hit.mp3" id="3_uqbw8"]
 [ext_resource type="PackedScene" uid="uid://diomq7ktk2cds" path="res://characters/enemies/abilities/slimegun.tscn" id="4_w5esg"]
+[ext_resource type="AudioStream" uid="uid://b2irwlgpn2q8c" path="res://audio/shoot_ball.mp3" id="5_qxyvi"]
+[ext_resource type="AudioStream" uid="uid://ctr558epsu1ek" path="res://audio/dash.mp3" id="6_oeaq7"]
 
 [node name="slime" groups=["enemy"] instance=ExtResource("1_74u02")]
 script = ExtResource("2_gmxiq")
@@ -11,6 +14,10 @@ script = ExtResource("2_gmxiq")
 [node name="hp_manager" parent="." index="2" node_paths=PackedStringArray("hp_bar")]
 hp_bar = NodePath("../Progress_bar")
 hp_max = 70.0
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="hp_manager" index="0"]
+stream = ExtResource("3_uqbw8")
+bus = &"SFX"
 
 [node name="Progress_bar" parent="." index="3"]
 position = Vector2(0, -50)
@@ -59,6 +66,20 @@ one_shot = true
 autostart = true
 
 [node name="slimegun" parent="." index="7" instance=ExtResource("4_w5esg")]
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="slimegun" index="0"]
+stream = ExtResource("5_qxyvi")
+pitch_scale = 0.62
+attenuation = 2.54912
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="dash_sound" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("6_oeaq7")
+volume_db = 5.333
+pitch_scale = 0.5
+attenuation = 2.07053
+bus = &"SFX"
 
 [connection signal="timeout" from="move_timer" to="." method="move_timeout"]
 [connection signal="timeout" from="move_delay" to="." method="delay_timeout"]

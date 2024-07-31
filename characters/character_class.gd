@@ -29,7 +29,10 @@ func _ready():
 func ready():
 	pass
 
+var wall_sfx_pitch = 0.9
+
 func wall_hit():
+	Sfx.play("wall_hit.mp3", wall_sfx_pitch, -24)
 	knockback(-tilemap.get_cell_direction(global_position), knockback_power)
 	tilemap.clear_circle(global_position, break_radius, 2)
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5tc8qv8jyaov"]
+[gd_scene load_steps=6 format=3 uid="uid://b5tc8qv8jyaov"]
 
-[ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://potions/engine/tile_map.tscn" id="1_i1v2g"]
+[ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://misc/potions/engine/tile_map.tscn" id="1_i1v2g"]
 [ext_resource type="PackedScene" uid="uid://dyoudyalwy6v" path="res://characters/player/player.tscn" id="2_rxr7l"]
 [ext_resource type="PackedScene" uid="uid://b8r21ctjjlrnu" path="res://misc/enemy_spawner.tscn" id="3_sy38x"]
 [ext_resource type="PackedScene" uid="uid://cjx5n65hh86a2" path="res://levels/interface/escape_menu.tscn" id="4_kqg82"]
+[ext_resource type="PackedScene" uid="uid://da0k4r4c8p4se" path="res://misc/music_player.tscn" id="5_o6s1x"]
 
 [node name="world" type="Node2D"]
 
@@ -17,3 +18,5 @@ zoom = Vector2(1.5, 1.5)
 [node name="enemy_spawner" parent="." instance=ExtResource("3_sy38x")]
 
 [node name="escape_menu" parent="." instance=ExtResource("4_kqg82")]
+
+[node name="music_player" parent="." instance=ExtResource("5_o6s1x")]

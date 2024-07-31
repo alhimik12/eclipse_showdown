@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://i5spmy3spysb"]
+[gd_scene load_steps=8 format=3 uid="uid://i5spmy3spysb"]
 
 [ext_resource type="PackedScene" uid="uid://obhs6tqkno1" path="res://characters/enemies/enemy_template.tscn" id="1_mgtnu"]
 [ext_resource type="Script" path="res://characters/enemies/monk.gd" id="2_hdroy"]
 [ext_resource type="Texture2D" uid="uid://ladlu0kugy30" path="res://textures/basic_shapes/plus.png" id="2_nm282"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="3_8bxv6"]
+[ext_resource type="AudioStream" uid="uid://b8qviy7bfhtrq" path="res://audio/hit.mp3" id="3_w7ccb"]
+[ext_resource type="AudioStream" uid="uid://bdsq7i4efqgoy" path="res://audio/attack_dart.mp3" id="6_vodfp"]
+[ext_resource type="AudioStream" uid="uid://ctr558epsu1ek" path="res://audio/dash.mp3" id="7_b6hrt"]
 
 [node name="monk" groups=["enemy"] instance=ExtResource("1_mgtnu")]
 script = ExtResource("2_hdroy")
@@ -11,6 +14,10 @@ script = ExtResource("2_hdroy")
 [node name="hp_manager" parent="." index="2" node_paths=PackedStringArray("hp_bar")]
 hp_bar = NodePath("../Progress_bar")
 hp_max = 50.0
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="hp_manager" index="0"]
+stream = ExtResource("3_w7ccb")
+bus = &"SFX"
 
 [node name="Progress_bar" parent="." index="3"]
 position = Vector2(0, -40)
@@ -43,3 +50,14 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource("6_vodfp")
+pitch_scale = 0.98
+bus = &"SFX"
+
+[node name="dash_sound" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("7_b6hrt")
+volume_db = 4.136
+pitch_scale = 3.02
+bus = &"SFX"

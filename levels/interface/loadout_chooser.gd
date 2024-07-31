@@ -5,7 +5,11 @@ extends Control
 @onready var option3: OptionButton = $VBoxContainer/HBoxContainer/VBoxContainer/OptionButton2
 @onready var option4: OptionButton = $VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton2
 
+func click(a = 0):
+	Sfx.play("click.mp3")
+
 func _on_start_button_down():
+	Sfx.play("click.mp3")
 	if option1.selected == -1 or option2.selected == -1 or option3.selected == -1 or option4.selected == -1:
 		$Label2.show()
 	else:
@@ -21,6 +25,7 @@ func _on_start_button_down():
 
 
 func randomize_pressed():
+	Sfx.play("click.mp3")
 	random_option(option1)
 	random_option(option2)
 	random_option(option3)

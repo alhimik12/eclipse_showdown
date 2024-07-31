@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://q7ce6itx4h0u"]
+[gd_scene load_steps=14 format=3 uid="uid://q7ce6itx4h0u"]
 
 [ext_resource type="Texture2D" uid="uid://cuilto7u8xk2a" path="res://textures/basic_shapes/square.png" id="1_eo1ai"]
 [ext_resource type="Script" path="res://characters/enemies/bug.gd" id="1_ugsu7"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dix67g2ptb14f" path="res://characters/components/progress_bar.tscn" id="5_63lwt"]
 [ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="6_0h70e"]
 [ext_resource type="PackedScene" uid="uid://c3a7mb3ficoqa" path="res://characters/enemies/abilities/dash.tscn" id="6_mbaup"]
+[ext_resource type="AudioStream" uid="uid://b8qviy7bfhtrq" path="res://audio/hit.mp3" id="6_ov0p8"]
 [ext_resource type="PackedScene" uid="uid://c2r87eglafsbr" path="res://characters/enemies/abilities/knife_throw.tscn" id="7_wx1vd"]
+[ext_resource type="AudioStream" uid="uid://ctr558epsu1ek" path="res://audio/dash.mp3" id="11_ejji4"]
+[ext_resource type="AudioStream" uid="uid://bhlsux77ljpcb" path="res://audio/knife_throw.mp3" id="12_tyb48"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wbmoe"]
 radius = 15.0333
@@ -49,6 +52,10 @@ shape = SubResource("CircleShape2D_wbmoe")
 hp_bar = NodePath("../Progress_bar")
 hp_max = 30.0
 
+[node name="hitsound" type="AudioStreamPlayer2D" parent="hp_manager"]
+stream = ExtResource("6_ov0p8")
+bus = &"SFX"
+
 [node name="Progress_bar" parent="." instance=ExtResource("5_63lwt")]
 position = Vector2(0, -20)
 scale = Vector2(0.4, 0.4)
@@ -58,4 +65,17 @@ centered = true
 
 [node name="dash" parent="." instance=ExtResource("6_mbaup")]
 
+[node name="dash_sound" type="AudioStreamPlayer2D" parent="dash"]
+stream = ExtResource("11_ejji4")
+volume_db = -2.885
+pitch_scale = 1.59
+attenuation = 2.07053
+bus = &"SFX"
+
 [node name="knife_throw" parent="." instance=ExtResource("7_wx1vd")]
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="knife_throw"]
+stream = ExtResource("12_tyb48")
+pitch_scale = 1.75
+attenuation = 2.37841
+bus = &"SFX"

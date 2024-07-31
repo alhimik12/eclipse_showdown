@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=3 uid="uid://b0bt755ng5arj"]
 
 [ext_resource type="Texture2D" uid="uid://qbravbhuyiy0" path="res://textures/basic_shapes/pixel.png" id="1_ibgmo"]
-[ext_resource type="Script" path="res://potions/engine/tile_map.gd" id="2_kjgc3"]
-[ext_resource type="PackedScene" uid="uid://gsxu6mn2o1dh" path="res://potions/engine/alchemy_component.tscn" id="3_crary"]
+[ext_resource type="Script" path="res://misc/potions/engine/tile_map.gd" id="2_kjgc3"]
+[ext_resource type="PackedScene" uid="uid://gsxu6mn2o1dh" path="res://misc/potions/engine/alchemy_component.tscn" id="3_crary"]
 [ext_resource type="Texture2D" uid="uid://bahxx146q1abv" path="res://textures/marchin_squares.png" id="4_qusiu"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="5_05058"]
-[ext_resource type="Script" path="res://potions/engine/marching_squares.gd" id="5_kkej3"]
-[ext_resource type="Script" path="res://potions/engine/controls.gd" id="6_l88g6"]
-[ext_resource type="Script" path="res://potions/engine/sun.gd" id="6_t3c8w"]
+[ext_resource type="Script" path="res://misc/potions/engine/marching_squares.gd" id="5_kkej3"]
+[ext_resource type="Script" path="res://misc/potions/engine/controls.gd" id="6_l88g6"]
+[ext_resource type="Script" path="res://misc/potions/engine/sun.gd" id="6_t3c8w"]
 
 [sub_resource type="TileSet" id="TileSet_egcye"]
 tile_size = Vector2i(10, 10)

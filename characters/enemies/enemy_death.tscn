@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1ggm32oh832c"]
+
+[ext_resource type="AudioStream" uid="uid://bdly57itj1kup" path="res://audio/death_enemy.mp3" id="1_55ua8"]
+[ext_resource type="Script" path="res://characters/enemies/enemy_death.gd" id="1_xjbtv"]
+[ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="2_q2vs2"]
+
+[sub_resource type="Gradient" id="Gradient_xsgfs"]
+offsets = PackedFloat32Array(0.404762, 0.555556, 0.785714, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.968627, 0.968627, 0.552941, 1, 0.791351, 0.428766, 0.20551, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vm2w5"]
+gradient = SubResource("Gradient_xsgfs")
+
+[sub_resource type="Curve" id="Curve_bsxyo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.992857, 0), -4.4813, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nipic"]
+curve = SubResource("Curve_bsxyo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sxyoo"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 124.55
+initial_velocity_max = 838.83
+gravity = Vector3(0, 0, 0)
+scale_min = 0.06
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_nipic")
+color_ramp = SubResource("GradientTexture1D_vm2w5")
+
+[node name="enemy_death" type="Node2D"]
+script = ExtResource("1_xjbtv")
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_55ua8")
+bus = &"SFX"
+
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_sxyoo")
+texture = ExtResource("2_q2vs2")
+lifetime = 0.3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.79
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

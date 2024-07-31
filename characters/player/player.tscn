@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyoudyalwy6v"]
+[gd_scene load_steps=10 format=3 uid="uid://dyoudyalwy6v"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_rnmyl"]
 [ext_resource type="Texture2D" uid="uid://c5dtlpgvynwrs" path="res://textures/basic_shapes/circle.png" id="1_slvn6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sffcljjwysfa" path="res://characters/components/hp_manager.tscn" id="4_c5kjv"]
 [ext_resource type="Gradient" uid="uid://d2ok54wdl54vd" path="res://misc/hp_gradient.tres" id="4_v3hs8"]
 [ext_resource type="PackedScene" uid="uid://cpqc7s0m87vw5" path="res://characters/components/effect_manager.tscn" id="5_wi0gc"]
+[ext_resource type="AudioStream" uid="uid://b6hqk880tcfux" path="res://audio/player_hit.mp3" id="6_knyyj"]
 [ext_resource type="Script" path="res://characters/player/gun_component.gd" id="7_r2n5x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3rm64"]
@@ -35,6 +36,10 @@ centered = true
 
 [node name="hp_manager" parent="." node_paths=PackedStringArray("hp_bar") instance=ExtResource("4_c5kjv")]
 hp_bar = NodePath("../Progress_bar")
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="hp_manager"]
+stream = ExtResource("6_knyyj")
+bus = &"SFX"
 
 [node name="effect_manager" parent="." instance=ExtResource("5_wi0gc")]
 

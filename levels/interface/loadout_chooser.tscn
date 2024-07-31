@@ -188,5 +188,9 @@ grow_vertical = 2
 theme = SubResource("Theme_v5fic")
 text = "RANDOMIZE"
 
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer/OptionButton" to="." method="click"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer/OptionButton2" to="." method="click"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="." method="click"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton2" to="." method="click"]
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_start_button_down"]
 [connection signal="pressed" from="randomize" to="." method="randomize_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://hddp1vovly20"]
+[gd_scene load_steps=8 format=3 uid="uid://hddp1vovly20"]
 
 [ext_resource type="FontFile" uid="uid://bg0dgxai68vii" path="res://misc/FiraMono-Bold.ttf" id="1_d7mne"]
 [ext_resource type="Script" path="res://levels/interface/death_menu.gd" id="1_jveio"]
 [ext_resource type="FontFile" uid="uid://d2xc3bvndpihv" path="res://misc/FiraMono-Medium.ttf" id="1_v6lbb"]
+[ext_resource type="AudioStream" uid="uid://c3xxntqjo66ee" path="res://audio/game_over.mp3" id="4_2e1as"]
 
 [sub_resource type="Theme" id="Theme_huy6w"]
 default_font = ExtResource("1_d7mne")
@@ -75,6 +76,10 @@ text = "RESTART WITH RANDOM LOADOUT"
 layout_mode = 2
 theme = SubResource("Theme_yc1ar")
 text = "EXIT TO MAIN MENU"
+
+[node name="game_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2e1as")
+bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer/RESTART" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]

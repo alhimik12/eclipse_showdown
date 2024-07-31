@@ -11,6 +11,9 @@ func _ready():
 
 func get_damage(dmg):
 	hp -= dmg
+	if dmg >= 4:
+		$hitsound.pitch_scale = (dmg/10) ** 0.5
+		$hitsound.play()
 	if hp <= 0:
 		hp = 0
 		get_parent().die()

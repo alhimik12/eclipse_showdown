@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkblhihiv4k7b"]
+[gd_scene load_steps=7 format=3 uid="uid://bkblhihiv4k7b"]
 
 [ext_resource type="PackedScene" uid="uid://dyoudyalwy6v" path="res://characters/player/player.tscn" id="1_upgm1"]
-[ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://potions/engine/tile_map.tscn" id="2_p7g81"]
+[ext_resource type="PackedScene" uid="uid://b0bt755ng5arj" path="res://misc/potions/engine/tile_map.tscn" id="2_p7g81"]
 [ext_resource type="PackedScene" uid="uid://cjx5n65hh86a2" path="res://levels/interface/escape_menu.tscn" id="3_3q3v4"]
 [ext_resource type="Theme" uid="uid://4it2e4wjpwh0" path="res://misc/tutorial_text.tres" id="4_wskeb"]
 [ext_resource type="Script" path="res://levels/element_showcase.gd" id="4_xt843"]
+[ext_resource type="Script" path="res://levels/interface/elements.gd" id="5_2mca2"]
 
 [node name="tutorial" type="Node2D"]
 
@@ -40,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 0
 theme = ExtResource("4_wskeb")
+script = ExtResource("5_2mca2")
 
 [node name="elements" type="RichTextLabel" parent="escape_menu/tutorial_text/elements"]
 layout_mode = 2
@@ -87,3 +89,5 @@ Thats it. press ESC to pause and exit to main menu"
 
 [node name="element_showcase" type="Node2D" parent="."]
 script = ExtResource("4_xt843")
+
+[connection signal="tab_changed" from="escape_menu/tutorial_text/elements" to="escape_menu/tutorial_text/elements" method="_on_tab_changed"]

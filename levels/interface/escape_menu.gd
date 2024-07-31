@@ -31,4 +31,5 @@ func _on_return_pressed():
 
 func _on_exit_pressed():
 	get_tree().paused = false
+	LevelVariables.wave = 1
 	get_tree().change_scene_to_file("res://levels/interface/menu.tscn")

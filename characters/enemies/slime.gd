@@ -24,6 +24,8 @@ func move_timeout():
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 	#tween.finished.connect(die)
 	tween.tween_property(self, "global_position", new_position, duration)
+	
+	$dash_sound.play()
 
 
 func delay_timeout():

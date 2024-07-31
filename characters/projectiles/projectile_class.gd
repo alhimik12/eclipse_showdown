@@ -43,6 +43,7 @@ func _process(delta):
 func check_collision():
 	var cell_type = tilemap.get_cell_type(global_position)
 	if cell_type == 2:
+		Sfx.play("wall_hit.mp3", 0.6, -28)
 		tilemap.clear_circle(global_position, 3, 2)
 		get_damage(1)
 

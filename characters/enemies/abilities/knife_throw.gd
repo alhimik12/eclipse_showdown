@@ -8,6 +8,7 @@ var delay = 0.2
 var knife
 
 func activate():
+	$attack_sound.play()
 	knife = knife_sc.instantiate()
 	knife.character = get_parent()
 	var speed_mult = enemy.get_speed(1)
